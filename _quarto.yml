@@ -5,7 +5,7 @@ project:
 lang: es
 
 website:
-  title: "NOCTUA-Rec"
+  title: "NOCTUA+"
   navbar:
     right:
       - href: index.qmd
