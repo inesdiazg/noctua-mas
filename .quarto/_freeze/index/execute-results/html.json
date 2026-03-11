@@ -1,5 +1,5 @@
 {
-  "hash": "fd45340457fb73796480308b7992576b",
+  "hash": "6bc8bbd5e629e5129db002735df97341",
   "result": {
     "engine": "knitr",
     "markdown": "---\ntitle: \"NOCTUA-Rec\"\nlang: es\n---\n\nAmpliación del programa de seguimiento de aves nocturnas NOCTUA de SEO/BirdLife usando **monitoreo acústico pasivo** (MAP).\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<div style='text-align:center; padding:10px;'>\n  <img src='images/noctua.jpg' height='120'>\n  <img src='images/noctua2.jpg' height='120'>\n  <img src='images/audiomoth.jpg' height='120'>\n</div>\n```\n\n:::\n:::\n\n\n:::::: cards-container\n::: {.card-inicio onclick=\"location.href='proyecto.html'\"}\n¿En qué consiste el proyecto?\\\n¿Quién conforma el equipo?\n:::\n\n::: {.card-inicio onclick=\"location.href='mapa.html'\"}\n¿Cuántos puntos de muestreo hay y dónde se ubican?\\\n¿Cuántas personas participan?\n:::\n\n::: {.card-inicio onclick=\"location.href='participar.html'\"}\n¿Cómo puedo participar?\n:::\n::::::\n\n### Enlaces de interés\n\n-   Programa NOCTUA: <https://seo.org/noctua-4/>\n\n-   Programas de ciencia ciudadana de SEO: <https://seo.org/ciencia-ciudadana/>\n\n-   Resultados de los programas de seguimiento: <https://seo.org/seguimiento-de-avifauna-resultados/>\n\n### Contacto\n",
