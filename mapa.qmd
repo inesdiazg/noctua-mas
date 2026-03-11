@@ -43,21 +43,21 @@ Haz clic en cada cuadrícula para ver la información sobre los puntos de muestr
 ```{r, echo=FALSE, message=FALSE, results=FALSE, warning=FALSE}
 ptos_sf <- st_as_sf(ptos, coords = c("Longitud", "Latitud"), crs = 4326)
 
-# 2️⃣ Cargar cuadrículas
-cuadrillas <- st_read("datos/Malla10x10_Ter_p.shp") %>%
+# Cargar cuadrículas
+UTM <- st_read("datos/Malla10x10_Ter_p.shp") %>%
   st_transform(crs = 4326)
 
-# 3️⃣ Unión espacial: asignar cada punto a la cuadrícula donde cae
-ptos_con_cuadrilla <- st_join(ptos_sf, cuadrillas, join = st_within)
+# Unión espacial: asignar cada punto a la cuadrícula donde cae
+ptos_con_UTM <- st_join(ptos_sf, UTM, join = st_within)
 
-# 4️⃣ Crear HTML de popup transpuesto
-popup_html <- ptos_con_cuadrilla %>%
+# Crear HTML de popup transpuesto
+popup_html <- ptos_con_UTM %>%
   st_set_geometry(NULL) %>%
   group_by(UTMCODE) %>%
   summarise(
     popup = {
       # Datos de cada punto
-      puntos <- PuntoMuestreo
+      puntos <- rep("Punto", dplyr::n())
       provincias <- Provincia
       inicio <- FechaInicioGrabacionMuestreo
       fin <- FechaFinGrabacionMuestreo
@@ -65,10 +65,7 @@ popup_html <- ptos_con_cuadrilla %>%
       habitat <- Habitat
 
       # Columnas con ancho mínimo
-      columnas <- paste0(
-        "<th style='padding:4px 12px; min-width:100px;'>", puntos, "</th>", 
-        collapse = ""
-      )
+      columnas <- paste0("<th style='padding:4px 12px; min-width:100px;'>", puntos, "</th>", collapse = "")
       
       fila_provincia <- paste0("<td style='padding:4px 12px; min-width:100px;'>", provincias, "</td>", collapse = "")
       fila_inicio    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", inicio, "</td>", collapse = "")
@@ -93,8 +90,8 @@ popup_html <- ptos_con_cuadrilla %>%
     .groups = "drop"
   )
 
-# 5️⃣ Unir info de popup a polígonos
-cuad_con_info <- cuadrillas %>%
+# Unir info de popup a polígonos
+cuad_con_info <- UTM %>%
   inner_join(popup_html, by = "UTMCODE")
 ```
 
