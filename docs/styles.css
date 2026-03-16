@@ -37,3 +37,21 @@
   border:none;
 }
 
+/* Evita que la imagen se recorte */
+#TOC {
+  overflow: visible !important;
+}
+
+/* Contenedor de la imagen */
+.imagen-derecha {
+  margin-top: 20px;
+  text-align: center;
+  width: max-content; /* ancho según la imagen */
+}
+
+/* Imagen flexible y sin límites del TOC */
+.imagen-derecha img {
+  width: 400px;      /* ajusta al tamaño que quieras */
+  max-width: none;   /* quita límite automático */
+  display: inline-block;
+}

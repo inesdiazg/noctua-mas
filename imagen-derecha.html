@@ -1,0 +1,18 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toc = document.querySelector("#TOC");  // busca la columna del TOC
+  if (toc) {
+    // Crear un contenedor para la imagen
+    const div = document.createElement("div");
+    div.className = "imagen-derecha";
+    
+    // Imagen
+    const img = document.createElement("img");
+    img.src = "images/buho_real_juan_varela.png";
+    img.alt = "ilustración de búho real de Juan Varela";
+    
+    div.appendChild(img);
+    toc.appendChild(div);
+  }
+});
+</script>

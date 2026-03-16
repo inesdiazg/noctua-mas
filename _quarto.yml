@@ -16,6 +16,10 @@ website:
         text: Mapa resumen
       - href: participar.qmd
         text: ¿Cómo participar?
+  page-footer:
+    center:
+      - "© 2026 NOCTUA+<br>SEO/BirdLife  |  Universidad Autónoma de Madrid, Departamento de Ecología"
+    background: light
 
 format:
   html:
@@ -24,6 +28,9 @@ format:
     css: styles.css
     toc: true
     # include-in-header: header.html
+    include-after-body: imagen-derecha.html
+    grid:
+      margin-width: 300px
 
 editor: visual
 

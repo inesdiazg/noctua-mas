@@ -58,31 +58,35 @@ popup_html <- ptos_con_UTM %>%
     popup = {
       # Datos de cada punto
       puntos <- rep("Punto", dplyr::n())
-      provincias <- Provincia
-      inicio <- FechaInicioGrabacionMuestreo
-      fin <- FechaFinGrabacionMuestreo
-      noches <- Dias_Grabados_Campo
-      habitat <- Habitat
-
+      # provincia <- Provincia
+      especies  <- "(aún no disponible)"
+      inicio    <- FechaInicioGrabacionMuestreo
+      fin       <- FechaFinGrabacionMuestreo
+      noches    <- Dias_Grabados_Campo
+      habitat   <- Habitat
+      grabadora <- Grabadora.ID
+      
       # Columnas con ancho mínimo
       columnas <- paste0("<th style='padding:4px 12px; min-width:100px;'>", puntos, "</th>", collapse = "")
-      
-      fila_provincia <- paste0("<td style='padding:4px 12px; min-width:100px;'>", provincias, "</td>", collapse = "")
+      # fila_provincia    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", provincia, "</td>", collapse = "")
+      fila_especies  <-paste0("<td style='padding:4px 12px; min-width:100px;'>", especies, "</td>", collapse = "")
       fila_inicio    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", inicio, "</td>", collapse = "")
       fila_fin       <- paste0("<td style='padding:4px 12px; min-width:100px;'>", fin, "</td>", collapse = "")
       fila_noches    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", noches, "</td>", collapse = "")
       fila_habitat   <- paste0("<td style='padding:4px 12px; min-width:100px;'>", habitat, "</td>", collapse = "")
+      fila_grabadora <- paste0("<td style='padding:4px 12px; min-width:100px;'>", grabadora, "</td>", collapse = "")
       
       # Tabla envuelta en un div con scroll horizontal
       paste0(
         "<div style='overflow-x:auto; max-width:400px;'>",  # <- aquí ajusta el max-width del popup
         "<table style='border-collapse: collapse; width: 100%; border: 1px solid #ccc;'>",
         "<tr style='background-color:#f0f0f0;'><th style='padding:4px 12px;'></th>", columnas, "</tr>",
-        "<tr><th style='padding:4px 12px;'>Provincia</th>", fila_provincia, "</tr>",
+        "<tr><th style='padding:4px 12px;'>Especies</th>", fila_especies, "</tr>",
+        "<tr><th style='padding:4px 12px;'>Hábitat</th>", fila_habitat, "</tr>",
         "<tr><th style='padding:4px 12px;'>Inicio</th>", fila_inicio, "</tr>",
         "<tr><th style='padding:4px 12px;'>Fin</th>", fila_fin, "</tr>",
-        "<tr><th style='padding:4px 12px;'>Noches</th>", fila_noches, "</tr>",
-        "<tr><th style='padding:4px 12px;'>Hábitat</th>", fila_habitat, "</tr>",
+        "<tr><th style='padding:4px 12px;'>Nº noches</th>", fila_noches, "</tr>",
+        "<tr><th style='padding:4px 12px;'>ID grabadora</th>", fila_grabadora, "</tr>",
         "</table>",
         "</div>"
       )
@@ -96,7 +100,7 @@ cuad_con_info <- UTM %>%
 ```
 
 ```{r, echo= FALSE}
-# 6️⃣ Crear mapa Leaflet
+# Crear mapa Leaflet
 leaflet(cuad_con_info) %>%
   addTiles() %>%
   setView(lng = -3.7, lat = 40.4, zoom = 5) %>%
