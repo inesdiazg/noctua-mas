@@ -37,7 +37,7 @@ resumen_html <- glue(
 HTML(resumen_html)
 ```
 
-Hábitats en los que se ubican las grabadoras:
+#### Hábitats en los que se ubican las grabadoras:
 
 ```{r, echo=FALSE}
 # gráfico hábitats
@@ -61,12 +61,13 @@ habitats_conteo2 <- ptos %>%
          NombreCategoria = factor(NombreCategoria, levels=rev(NombreCategoria)))
 
 ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
-  geom_col(fill = "skyblue", width=0.9)+
+  geom_col(fill = "skyblue", width=0.5)+
   ggtitle("Número de grabadoras en cada tipo de hábitat")+
   labs(x="", y="")+
   geom_text(aes(label=n, hjust=-1), size=4, colour="skyblue")+
   scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
   #scale_y_discrete(limits = rev(levels(habitats_conteo2$HabitatGeneral)))+
+  #scale_y_discrete(expand = c(0, 0))+
   theme_light()+
   theme(
     panel.grid.major.x = element_line(colour="#EBEBEB"),
