@@ -13,7 +13,7 @@ website:
       - href: proyecto.qmd
         text: El proyecto
       - href: mapa.qmd
-        text: Mapa resumen
+        text: Resumen de resultados
       - href: participar.qmd
         text: ¿Cómo participar?
   page-footer:
@@ -27,8 +27,7 @@ format:
       - cosmo
     css: styles.css
     toc: true
-    # include-in-header: header.html
-    include-after-body: imagen-derecha.html
+    include-after-body: body.html
     grid:
       margin-width: 300px
 

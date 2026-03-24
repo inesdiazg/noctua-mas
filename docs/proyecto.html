@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./mapa.html"> 
-<span class="menu-text">Mapa resumen</span></a>
+<span class="menu-text">Resumen de resultados</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./participar.html"> 
@@ -198,41 +198,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const toc = document.querySelector("#TOC");  // busca la columna del TOC
-
-  if (toc) {
-
-    // Crear un contenedor para la imagen
-
-    const div = document.createElement("div");
-
-    div.className = "imagen-derecha";
-
-    
-
-    // Imagen
-
-    const img = document.createElement("img");
-
-    img.src = "images/buho_real_juan_varela.png";
-
-    img.alt = "ilustración de búho real de Juan Varela";
-
-    
-
-    div.appendChild(img);
-
-    toc.appendChild(div);
-
-  }
-
-});
-
-</script>
+<img src="images/buho_real.png" class="imagen-derecha">
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

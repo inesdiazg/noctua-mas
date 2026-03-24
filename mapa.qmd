@@ -1,9 +1,9 @@
 ---
-title: "Puntos de muestreo con grabadora - NOCTUA 2025"
+title: "Resultados - NOCTUA+ 2025"
 lang: es
 ---
 
-### Resumen de la temporada:
+### Resumen de los puntos de muestreo
 
 ```{r, echo=FALSE, message=FALSE}
 library(leaflet)
@@ -11,18 +11,18 @@ library(glue)
 library(htmltools)
 library(sf)
 library(dplyr)
+library(ggplot2)
 ```
 
 ```{r, echo=FALSE}
-# resumen
-ptos <- read.csv("datos/noctua.csv", sep = ";")
+# resumen 
+ptos <- read.csv("datos/noctua_habitats.csv", sep = ";")
 ptos <- ptos %>%
-  mutate(
-    PuntoMuestreo = gsub("_", " ", PuntoMuestreo),
-    FechaInicioGrabacionMuestreo = as.Date(FechaInicioGrabacionMuestreo),
-    FechaInicioGrabacionMuestreo = format(FechaInicioGrabacionMuestreo, "%d/%m/%Y"),
-    FechaFinGrabacionMuestreo = as.Date(FechaFinGrabacionMuestreo),
-    FechaFinGrabacionMuestreo = format(FechaFinGrabacionMuestreo, "%d/%m/%Y"))
+  mutate(PuntoMuestreo = gsub("_", " ", PuntoMuestreo))
+    # FechaInicioGrabacionMuestreo = as.Date(FechaInicioGrabacionMuestreo),
+    # FechaInicioGrabacionMuestreo = format(FechaInicioGrabacionMuestreo, "%d/%m/%Y"),
+    # FechaFinGrabacionMuestreo = as.Date(FechaFinGrabacionMuestreo),
+    #FechaFinGrabacionMuestreo = format(FechaFinGrabacionMuestreo, "%d/%m/%Y"))
 
 resumen_html <- glue(
   "<ul>
@@ -36,7 +36,48 @@ resumen_html <- glue(
 
 HTML(resumen_html)
 ```
-### Mapa con cuadrículas UTM:
+
+Hábitats en los que se ubican las grabadoras:
+
+```{r, echo=FALSE}
+# gráfico hábitats
+
+library(forcats)
+library(stringr)
+
+#nuevos datos solo con las columnas que me interesan
+habitats_conteo <- ptos %>%
+  select(HabitatGenTipo, HabitatGeneral, HabitatTipo) %>%
+  arrange(HabitatGeneral) %>%
+  arrange(HabitatTipo) %>%
+  count(HabitatGenTipo)
+
+habitats_conteo2 <- ptos %>%
+  select(HabitatGeneral) %>%
+  arrange(HabitatGeneral) %>%
+  count(HabitatGeneral) %>%
+  mutate(HabitatGeneral = as.factor(HabitatGeneral),
+         NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
+         NombreCategoria = factor(NombreCategoria, levels=rev(NombreCategoria)))
+
+ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
+  geom_col(fill = "skyblue", width=0.9)+
+  ggtitle("Número de grabadoras en cada tipo de hábitat")+
+  labs(x="", y="")+
+  geom_text(aes(label=n, hjust=-1), size=4, colour="skyblue")+
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
+  #scale_y_discrete(limits = rev(levels(habitats_conteo2$HabitatGeneral)))+
+  theme_light()+
+  theme(
+    panel.grid.major.x = element_line(colour="#EBEBEB"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_line(colour="#EBEBEB"), 
+    panel.grid.minor.y = element_blank(),
+    panel.border = element_blank(), 
+    plot.title = element_text(face = "bold", size = 10, hjust = 0.5))
+```
+
+### Mapa
 
 Haz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula.
 
@@ -57,9 +98,10 @@ popup_html <- ptos_con_UTM %>%
   summarise(
     popup = {
       # Datos de cada punto
-      puntos <- rep("Punto", dplyr::n())
+      # puntos <- rep("Punto", dplyr::n())
+      puntos    <- PuntoMuestreo
       # provincia <- Provincia
-      especies  <- "(aún no disponible)"
+      especies  <- rep("(aún no disponible)", dplyr::n())
       inicio    <- FechaInicioGrabacionMuestreo
       fin       <- FechaFinGrabacionMuestreo
       noches    <- Dias_Grabados_Campo
