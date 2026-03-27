@@ -65,20 +65,26 @@ th, td {
   display: flex;
   align-items: stretch; /* hace que los hijos tengan la misma altura */
   height: 210px;
-  padding-bottom: 40px;
+  padding-top: 10px;
 }
 
 /* Cada columna ocupa 50% y respeta el padding */
 .flex-item-left {
   width: 50%;
-  padding-top: 10px;
   padding-right: 15px;
+  padding-bottom: 40px;
 }
 
 .flex-item-right {
   width: 50%;
-  padding-top: 10px;
   padding-left: 15px;
+}
+
+/* Contenedor para tabla grabadoras */
+
+.tabla-grab {
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 /* El mapa ocupa todo el ancho y altura del contenedor */

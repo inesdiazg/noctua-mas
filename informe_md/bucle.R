@@ -2,7 +2,8 @@ library(rmarkdown)
 library(pagedown)
 library(dplyr)
 
-setwd("C:/Users/inesi/OneDrive - UAM (1)/Producto_BirdNET/informe_md")
+#setwd("C:/Users/inesi/OneDrive - UAM (1)/Producto_BirdNET/informe_md")
+setwd("C:/noctua-mas/informe_md")
 datos_bucle <- read.csv("noctua.csv",sep=";",header=TRUE, stringsAsFactors = FALSE)
 datos_bucle <- datos_bucle %>%
   mutate(
