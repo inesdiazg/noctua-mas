@@ -1,0 +1,23 @@
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{graphicx}
+
+% Colores corporativos
+\definecolor{azulcorporativo}{HTML}{0C5387}
+\definecolor{azulclaro}{HTML}{ADD8E6}
+
+% Estilo de sección (h2)
+\titleformat{\section}
+  {\color{white}\normalfont\Large\bfseries}
+  {}
+  {0em}
+  {\colorbox{azulcorporativo}{\parbox{\dimexpr\linewidth-2\fboxsep}{\thesection\quad ##1}}}
+
+% Estilo subsección (h3)
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {}
+  {0em}
+  {\colorbox{azulclaro}{\parbox{\dimexpr\linewidth-2\fboxsep}{##1}}}
+
+\setlength{\parindent}{0pt}

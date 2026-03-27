@@ -1,0 +1,77 @@
+---
+title: "Informe de resultados NOCTUA 2024"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    includes:
+      in_header: header.tex
+fontsize: 11pt
+geometry: margin=2cm
+params:
+  data: NA
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(dplyr)
+library(glue)
+library(lubridate)
+library(knitr)
+library(ggplot2)
+library(maps)
+library(gridExtra)
+library(kableExtra)
+
+setwd("C:/Users/inesi/OneDrive - UAM (1)/Producto_BirdNET/informe_md")
+data <- read.csv("noctua.csv",sep=";",header=TRUE)
+data <- head(data, n=3)
+```
+
+```{r tabla_pdf, echo=FALSE, results='asis'}
+info_punto <- data.frame(
+  punto = params$data$PuntoMuestreo,
+  voluntario = params$data$Responsable,
+  temporada = year(params$data$FechaInstalacion),
+  localizacion = glue("{params$data$Provincia} ({params$data$Latitud}, {params$data$Longitud})"),
+  habitat = params$data$Habitat,
+  stringsAsFactors = FALSE
+)
+
+info_puntot <- as.data.frame(t(info_punto))
+row.names(info_puntot) <- c("Punto de muestreo","Voluntario/a","Temporada","Localización","Hábitat")
+
+kbl(info_puntot,
+    align = "l",
+    booktabs = TRUE,
+    format = "latex") %>%
+  kable_styling(
+    latex_options = c("hold_position"),
+    full_width = FALSE,
+    position = "left") %>%
+  column_spec(1, background = "#B8B8B8") %>%
+  row_spec(0, extra_latex_after = "\\hline")
+```
+
+```{r mapa_pdf, echo=FALSE, fig.width=4, fig.height=3}
+mapa_base <- map_data("world")
+
+p <- ggplot() +
+  geom_polygon(data = mapa_base,
+               aes(x = long, y = lat, group = group),
+               fill = "grey95", color = "white") +
+  geom_point(aes(x = params$datos$Longitud,
+                 y = params$datos$Latitud),
+             color = "#0C5387", size = 4) +
+  coord_cartesian(
+    xlim = c(params$data$Longitud - 1,
+             params$data$Longitud + 1),
+    ylim = c(params$data$Latitud - 1,
+             params$data$Latitud + 1)
+  ) +
+  theme_void()
+
+# Convertir tabla a grob
+tabla_grob <- gridExtra::tableGrob(info_puntot, rows = NULL)
+
+# Mostrar tabla y mapa lado a lado
+grid.arrange(tabla_grob, ggplotGrob(p), ncol = 2, widths = c(0.5, 0.5))
+```

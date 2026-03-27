@@ -1,0 +1,20 @@
+---
+title: "Informe por punto"
+output: pdf_document
+params:
+  data: NA
+---
+
+
+```{r setup, include=FALSE}
+
+```
+## Punto: `r params$punto`
+
+✅ Dentro del Rmd
+
+Accedes así:
+
+params$data$ubicacion
+params$data$ventas
+params$data$ratio_eficiencia

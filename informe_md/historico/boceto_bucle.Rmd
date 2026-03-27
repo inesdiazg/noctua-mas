@@ -1,0 +1,90 @@
+---
+title: "Informe de resultados NOCTUA 2024"
+output:
+  html_document:
+    theme: flatly
+    css: styles.css
+params:
+  data: NA
+---
+
+```{r setup, echo=FALSE, error=FALSE, message=FALSE}
+library(dplyr)
+library(glue)
+library(kableExtra)
+library(lubridate)
+library(knitr)
+library(htmltools)
+library(leaflet)
+
+setwd("C:/Users/inesi/OneDrive - UAM (1)/Producto_BirdNET/informe_md")
+data <- read.csv("noctua.csv",sep=";",header=TRUE, stringsAsFactors = FALSE)
+data <- head(datos, n=3)
+```
+
+```{r crear_tabla, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
+info_punto <- data.frame(
+  punto = character(),
+  voluntario = character(),
+  temporada = numeric(),
+  localizacion = character(),
+  habitat = character(),
+  stringsAsFactors = FALSE)
+
+info_punto <- info_punto %>%
+  add_row(
+    punto = params$data$PuntoMuestreo,
+    voluntario = params$data$Responsable,
+    temporada = year(params$data$FechaInstalacion),
+    localizacion = glue("{params$data$Provincia} ({params$data$Latitud}, {params$data$Longitud})"),
+    habitat = params$data$Habitat
+  )
+
+info_puntot <- as.data.frame(t(info_punto))
+row.names(info_puntot) <- c("Punto de muestreo","Voluntario/a","Temporada","Localización", "Hábitat")
+
+info_puntot %>%
+  kbl(align = "l") %>%
+  kable_styling(full_width = F, position = "left") %>%
+  row_spec(0:nrow(info_puntot), extra_css = "border: 1px solid;") %>%
+  column_spec(1, background = "#B8B8B8") %>%
+  row_spec(0, extra_css = "display: none;")
+```
+
+```{r crear_mapa, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
+leaflet(params$data) |>
+  addTiles() |>
+  setView(lng = params$data$Longitud, lat = params$data$Latitud, zoom = 11) |>
+  addMarkers(
+    data = params$data,
+    lng = ~Longitud,
+    lat = ~Latitud)
+```
+
+::::: {style="display: flex;"}
+::: {style="width: 50%; padding-top: 10px; padding-right: 20px;"}
+```{r mostrar_tabla, echo=FALSE}
+    info_puntot %>%
+      kbl(align = "l") %>%
+      kable_styling(full_width = T, position = "left") %>%
+      row_spec(0:nrow(info_puntot), extra_css = "border: 1px solid;") %>%
+      column_spec(1, background = "#D9D9D9") %>%
+      row_spec(0, extra_css = "display: none;")
+```
+:::
+
+::: {style="width: 50%;padding-top: 10px;padding-left: 20px;"}
+```{r mostrar_mapa, echo=FALSE}
+    leaflet(params$data, height = 195, width = 410) |>
+      addTiles() |>
+      setView(lng = params$data$Longitud, lat = params$data$Latitud, zoom = 11) |>
+      addMarkers(data = params$data, lng = ~Longitud, lat = ~Latitud)
+```
+:::
+:::::
+
+## **Comunidad de aves nocturnas**
+
+(número de especies totales)
+
+(lista de las aves detectadas)

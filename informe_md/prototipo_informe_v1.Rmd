@@ -1,0 +1,281 @@
+---
+title: " "
+output:
+  html_document:
+    theme: flatly
+    css: styles.css
+params:
+  puntos: NA
+---
+
+```{r setup, echo=FALSE, error=FALSE, message=FALSE}
+library(dplyr)
+library(glue)
+library(kableExtra)
+library(lubridate)
+library(knitr)
+library(htmltools)
+library(leaflet)
+
+setwd("C:/Users/inesi/OneDrive - UAM (1)/Producto_BirdNET/informe_md")
+puntos <- read.csv("noctua.csv",sep=";",header=TRUE, stringsAsFactors = FALSE)
+# graficos <- read.csv("tu_otro_archivo.csv", sep=";", stringsAsFactors = FALSE)
+```
+
+::: {style="display: flex; align-items: center; justify-content: space-between;"}
+<img src="images/seo.png" width="120" style="margin-right: 30px; margin-top; 30 px;"/> <img src="images/noctua.jpg" width="256" style="margin-top; 30 px;"/>
+:::
+
+<center>
+
+<h1>**Informe de resultados NOCTUA-Rec 2025**</h1>
+
+</center>
+
+```{r crear_tabla_punto, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
+# 1. Crear dataframe vacío
+info_punto <- data.frame(
+  punto = character(),
+  voluntario = character(),
+  temporada = numeric(),
+  localizacion = character(),
+  habitat = character(),
+  stringsAsFactors = FALSE)
+
+# 2. Añadir contenido a los campos
+info_punto <- info_punto %>%
+  add_row(
+    punto = params$puntos$PuntoMuestreo,
+    voluntario = params$puntos$Responsable,
+    temporada = year(params$puntos$FechaInstalacion),
+    localizacion = glue("{params$puntos$Provincia} ({round(params$puntos$Latitud,5)}, {round(params$puntos$Longitud,5)})"),
+    habitat = params$puntos$Habitat
+  )
+
+# 3. Trasponer y dar nombre a las filas
+info_puntot <- as.data.frame(t(info_punto))
+row.names(info_puntot) <- c("Punto de muestreo","Voluntario/a","Temporada","Localización", "Hábitat")
+
+# 4. Hacer tabla kableExtra bonita
+tabla_punto <- info_puntot %>%
+  kbl(align = "l") %>%
+  kable_styling(full_width = T, position = "left") %>%
+  row_spec(0:nrow(info_puntot), extra_css = "border: 1px solid;") %>%
+  column_spec(1, background = "#D9D9D9") %>%
+  row_spec(0, extra_css = "display: none;")
+```
+
+```{r crear_mapa, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
+mapa <- leaflet(params$puntos) |>
+  addTiles() |>
+  setView(lng = params$puntos$Longitud, lat = params$puntos$Latitud, zoom = 11) |>
+  addMarkers(data = params$puntos, lng = ~Longitud, lat = ~Latitud)
+```
+
+::::: flex-container
+::: flex-item-left
+```{r mostrar_tabla_punto, echo=FALSE}
+    tabla_punto
+```
+:::
+
+::: flex-item-right
+```{r mostrar_mapa, echo=FALSE}
+    mapa
+```
+:::
+:::::
+
+## **Comunidad de aves nocturnas**
+
+En tu punto de muestreo han vocalizado **4 especies**
+
+-   Autillo europeo (*Otus scops*)
+
+-   Mochuelo europeo (*Athene noctua*)
+
+-   Lechuza común (*Tyto alba*)
+
+-   Búho chico (*Asio otus*)
+
+### **¿Cuántas noches ha cantado cada especie?**
+
+::::::: columns
+:::: column
+::: card-graficos
+![](images/grafico1.png){width="302"}
+:::
+::::
+
+:::: column
+::: card
+El **mochuelo común** es el ave que ha cantado más número de noches.
+:::
+::::
+:::::::
+
+### **¿Cuántas veces por noche ha cantado cada especie?**
+
+::::::: columns
+:::: column
+::: card-graficos
+![](images/grafico2.png){width="312"}
+:::
+::::
+
+:::: column
+::: card
+El **autillo europeo** es el ave que más ha cantado cada noche, de media.
+:::
+::::
+:::::::
+
+### **¿Cuánto tiempo ha cantado en total cada especie?**
+
+::::::: columns
+:::: column
+::: card-graficos
+![](images/grafico3.png){width="276"}
+:::
+::::
+
+:::: column
+::: card
+El **autillo europeo** es la especie qué más actividad acústica ha tenido.
+:::
+::::
+:::::::
+
+## **Fenología - ¿Cuándo han cantado las aves nocturnas?**
+
+### **Durante la temporada**
+
+::::::: columns
+:::: column
+::: card-graficos
+![](images/grafico4.png){width="314"}
+
+(gráfico de violín con densidad de vocalizaciones a lo largo de los meses)
+:::
+::::
+
+:::: column
+::: card
+[Primera y última especie en vocalizar en la temporada]
+:::
+::::
+:::::::
+
+### **Durante la noche**
+
+::::::: columns
+:::: column
+::: card-graficos
+![](images/clipboard-2050271921.png){width="296"}
+
+(gráfico: media del primer y último minuto respecto al atardecer en el que hay vocalizaciones de cada especie)
+:::
+::::
+
+:::: column
+::: card
+De media, el **autillo europeo** es el ave que antes empieza a vocalizar en la noche, mientras que el **chotacabras cuellirrojo** es la última.
+:::
+::::
+:::::::
+
+## **Información sobre la grabadora**
+
+```{r crear_tabla_grabadora, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
+info_grab <- data.frame(
+  config = character(),
+  periodo = character(),
+  mins = numeric(),
+  dias_error = character(), # estos dos siguientes serían numeric()
+  archivos = character(),
+  stringsAsFactors = FALSE)
+
+info_grab <- info_grab %>%
+  add_row(
+    config = "(parámetros, iguales para todas)",
+    periodo = glue("{params$puntos$FechaInicioGrabacionMuestreo} - {params$puntos$FechaFinGrabacionMuestreo}"),
+    mins = (params$puntos$Dias_Grabados_Campo*60),
+    dias_error = "(días con error)",
+    archivos = "(con la configuración actual, es igual al nº de minutos)"
+  )
+
+info_grabt <- as.data.frame(t(info_grab))
+row.names(info_grabt) <- c("Configuración","Periodo de grabación en el punto","Minutos grabados","Sesiones con datos incompletos", "Archivos generados")
+
+tabla_grab <- info_grabt %>%
+  kbl(align = "l") %>%
+  kable_styling(full_width = T, position = "left") %>%
+  row_spec(0:nrow(info_puntot), extra_css = "border: 1px solid;") %>%
+  column_spec(1, background = "#D9D9D9") %>%
+  row_spec(0, extra_css = "display: none;")
+```
+
+```{r mostrar_tabla_grab, echo=FALSE}
+    tabla_grab
+```
+
+## **Ejemplos de grabaciones**
+
+### **Especies**
+
+[fragmentos de audios de este punto, representativos de cada especie detectada o de algunas]
+
+**Cárabo**
+
+<audio controls>
+
+<source src="audios/XC845803 - Cárabo común - Strix aluco.wav" type="audio/wav">
+
+</audio>
+
+(el audio reproducible solo funcionaría al mandar un html para abrir en el navegador, no con pdf)
+
+```{r audio_especies, echo=FALSE, fig.width=12, fig.height=4}
+library(tuneR)
+library(seewave)
+
+# Leer audio
+audio <- readWave("audios/XC845803 - Cárabo común - Strix aluco.wav")
+# Frecuencia de muestreo
+fs <- audio@samp.rate
+
+max_khz <- (fs/2000) * 0.99
+
+par(family = "sans", bty = "n")
+spectro(audio,
+        f = fs,
+        flim = c(0, 6),
+        wl = 1024,
+        ovlp = 75,
+        scale = FALSE,
+        osc = FALSE,
+        palette = function(n) gray.colors(n, start = 1, end = 0),
+        grid = FALSE,
+        axisX = TRUE,
+        axisY = TRUE,
+        tcl = -0.2,
+        cex.lab = 1,
+        tlab = "Tiempo (s)",
+        flab = "Frecuencia (kHz)")
+```
+
+### **Paisaje sonoro**
+
+[grabaciones reproducibles en distintos momentos del muestreo, si se manda el informe en html]
+
+(¿link a más audios de este punto? opción si se manda en pdf)
+
+## **Contacto**
+
+[direcciones de email de contacto/teléfonos]
+
+## **Más información**
+
+Para ver los resultados globales del programa NOCTUA con grabadoras visita la web <a href="https://inesdiazg.github.io/noctua-map/" target="_blank">Noctua-Rec</a> (link de la web/informe global)
+
+[enlaces con más info (NOCTUA, programas de voluntariado de SEO…)]

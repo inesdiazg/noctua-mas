@@ -1,0 +1,93 @@
+/* Tamaño base del documento */
+html {
+  font-size: 14px;
+}
+
+body {
+  font-size: 1rem;   /* 1rem = 14px ahora */
+}
+
+/* Títulos */
+h1 {font-size: 2.4rem; text-align: center; padding-bottom: 10px}
+h2 {font-size: 1.4rem;
+    color: white !important;
+    background-color: #0C5387;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left:5px;
+}
+h3 {font-size: 1.2rem;
+    background-color: lightblue;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left:5px;
+}
+
+/* Tablas */
+table {
+  font-size: 0.8rem !important;
+}
+
+th, td {
+  font-size: 0.8rem !important;
+}
+
+@media print {
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;}
+
+  h1 strong {color: #141414 !important;}}
+  
+  h2 {
+    background-color: #0C5387 !important;
+    color: #ffffff !important;}
+
+  h2 strong {color: #ffffff !important;}
+
+  h3 {
+    background-color: lightblue !important;
+    color: #141414 !important;}
+
+  h3 strong {color: #141414 !important;}}
+
+@page {
+  size: A4;
+  margin-top: 3cm;
+  margin-bottom: 3cm;
+  margin-left: 1.7cm;
+  margin-right: 1.7cm;
+}
+
+/* Contenedor flex que alinea y estira "hijos"" */
+.flex-container {
+  display: flex;
+  align-items: stretch; /* hace que los hijos tengan la misma altura */
+  height: 210px;
+  padding-bottom: 40px;
+}
+
+/* Cada columna ocupa 50% y respeta el padding */
+.flex-item-left {
+  width: 50%;
+  padding-top: 10px;
+  padding-right: 15px;
+}
+
+.flex-item-right {
+  width: 50%;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+/* El mapa ocupa todo el ancho y altura del contenedor */
+.flex-item-right .leaflet-container {
+  width: 100% !important;   /* todo el ancho de la columna */
+  height: 100% !important;  /* altura igual al contenedor */
+  min-height: 195px;        /* altura mínima para que no se vea muy pequeño */
+}
+
+.card-graficos {
+  border:none;
+}
