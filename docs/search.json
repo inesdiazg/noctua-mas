@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "proyecto.html",
-    "href": "proyecto.html",
-    "title": "El proyecto",
-    "section": "",
-    "text": "Historia\n\nSEO/BirdLife desarrolla desde hace años el programa de seguimiento de aves nocturnas “NOCTUA” dentro de sus distintas actividades de monitorización de la biodiversidad a través de la ciencia ciudadana. Este programa tiene como objetivo describir las tendencias poblacionales de las aves nocturnas y se basa en las escuchas activas que desarrollan voluntarios y voluntarias de acuerdo con un protocolo estandarizado. Desde 2024, Diego Llusia y Javier Seoane, del Departamento de Ecología de la Universidad Autónoma de Madrid y adscritos al Centro de Investigación en Biodiversidad y Cambio Global, y sus estudiantes tutelados han colaborado informalmente con ese programa para fortalecerlo con herramientas basadas en seguimiento acústico pasivo.\nEn el marco de esta colaboración, el equipo de trabajo durante el primer trimestre de 2025 diseñó un protocolo de grabación mediante grabadoras automáticas, configuró los equipos a enviar a los voluntarios y desarrolló actividades de capacitación (documentación de apoyo y reunión con los voluntarios). SEO/BirdLife proporcionó las grabadoras automáticas a los voluntarios del programa.\n\nObjetivos\nEl objetivo último del proyecto es diseñar una propuesta de seguimiento de especies de aves diana mediante grabadores automáticos como apoyo al programa NOCTUA. Para ello se requiere, a modo de objetivos generales:\n\nCapacitar a los voluntarios para desplegar y manejar las grabadoras\nElaborar un sistema de almacenamiento y gestión de la información\nDesarrollar modelos de reconocimiento de sonido y determinar su desempeño\nElaborar índices que informen sobre las tendencias temporales de las especies\n\n\n\n\n\n\nEquipo\n\n\n\nEquipo de trabajo en la UAM:\n\nJavier Seoane (javier.seoane@uam.es)\nDiego Llusia (diego.llusia@uam.es)\nGuzmán Verde (guzman.verde@uam.es)\nInés Díaz (ines.diaz@uam.es)\n\n\n\n\nEquipo de trabajo en SEO/BirdLife:\n\nVirginia Escandell (vescandell@seo.org )\nJuan Carlos del Moral (jcdelmoral@seo.org )\nEmilio Escudero (eescudero@seo.org )"
-  },
-  {
-    "objectID": "mapa.html",
-    "href": "mapa.html",
+    "objectID": "resultados.html",
+    "href": "resultados.html",
     "title": "Resultados - NOCTUA+ 2025",
     "section": "",
-    "text": "Resumen de los puntos de muestreo\n\n\n\n  Total de grabadoras: 142\n  Número de responsables: 63\n  Cuadrículas UTM cubiertas: 70\n  Noches grabadas: 96.6 de media \n  (mínimo: 0, máximo: 169)\n\n\n\n\nHábitats en los que se ubican las grabadoras:\n\n\n\n\n\n\n\n\n\n\n\n\nMapa\nHaz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula."
+    "text": "Resumen de los puntos de muestreo\n\n\n\n  Total de grabadoras: 142\n  Número de responsables: 63\n  Cuadrículas UTM cubiertas: 70\n  Noches grabadas: 96.6 de media \n  (mínimo: 0, máximo: 169)\n\n\n\n\n¿Dónde se ubican las grabadoras?\n\n\n\nMapa\nHaz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula."
   },
   {
     "objectID": "index.html",
@@ -19,5 +12,12 @@
     "title": "NOCTUA+",
     "section": "",
     "text": "Ampliación del programa de seguimiento de aves nocturnas NOCTUA de SEO/BirdLife usando monitoreo acústico pasivo (MAP).\n\n\n\n  \n  \n  \n\n\n\n\n\n¿En qué consiste el proyecto?\n¿Quién conforma el equipo?\n\n\n¿Cuántos puntos de muestreo hay y dónde se ubican?\n¿Cuántas personas participan?\n\n\n¿Cómo puedo participar?\n\n\n\nEnlaces de interés\n\nPrograma NOCTUA: https://seo.org/noctua-4/\nProgramas de ciencia ciudadana de SEO: https://seo.org/ciencia-ciudadana/\nResultados de los programas de seguimiento: https://seo.org/seguimiento-de-avifauna-resultados/\n\n\n\nContacto"
+  },
+  {
+    "objectID": "proyecto.html",
+    "href": "proyecto.html",
+    "title": "El proyecto",
+    "section": "",
+    "text": "Historia\n\nSEO/BirdLife desarrolla desde hace años el programa de seguimiento de aves nocturnas “NOCTUA” dentro de sus distintas actividades de monitorización de la biodiversidad a través de la ciencia ciudadana. Este programa tiene como objetivo describir las tendencias poblacionales de las aves nocturnas y se basa en las escuchas activas que desarrollan voluntarios y voluntarias de acuerdo con un protocolo estandarizado. Desde 2024, Diego Llusia y Javier Seoane, del Departamento de Ecología de la Universidad Autónoma de Madrid y adscritos al Centro de Investigación en Biodiversidad y Cambio Global, y sus estudiantes tutelados han colaborado informalmente con ese programa para fortalecerlo con herramientas basadas en seguimiento acústico pasivo.\nEn el marco de esta colaboración, el equipo de trabajo durante el primer trimestre de 2025 diseñó un protocolo de grabación mediante grabadoras automáticas, configuró los equipos a enviar a los voluntarios y desarrolló actividades de capacitación (documentación de apoyo y reunión con los voluntarios). SEO/BirdLife proporcionó las grabadoras automáticas a los voluntarios del programa.\n\nObjetivos\nEl objetivo último del proyecto es diseñar una propuesta de seguimiento de especies de aves diana mediante grabadores automáticos como apoyo al programa NOCTUA. Para ello se requiere, a modo de objetivos generales:\n\nCapacitar a los voluntarios para desplegar y manejar las grabadoras\nElaborar un sistema de almacenamiento y gestión de la información\nDesarrollar modelos de reconocimiento de sonido y determinar su desempeño\nElaborar índices que informen sobre las tendencias temporales de las especies\n\n\n\n\n\n\nEquipo\n\n\n\nEquipo de trabajo en la UAM:\n\nJavier Seoane (javier.seoane@uam.es)\nDiego Llusia (diego.llusia@uam.es)\nGuzmán Verde (guzman.verde@uam.es)\nInés Díaz (ines.diaz@uam.es)\n\n\n\n\nEquipo de trabajo en SEO/BirdLife:\n\nVirginia Escandell (vescandell@seo.org )\nJuan Carlos del Moral (jcdelmoral@seo.org )\nEmilio Escudero (eescudero@seo.org )"
   }
 ]

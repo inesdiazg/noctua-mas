@@ -5,7 +5,7 @@ lang: es
 
 ### Resumen de los puntos de muestreo
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(leaflet)
 library(glue)
 library(htmltools)
@@ -16,7 +16,7 @@ library(ggplot2)
 
 ```{r, echo=FALSE}
 # resumen 
-ptos <- read.csv("datos/noctua_habitats.csv", sep = ";")
+ptos <- read.csv("datos/noctua_habitats.csv", sep = ",")
 ptos <- ptos %>%
   mutate(PuntoMuestreo = gsub("_", " ", PuntoMuestreo))
     # FechaInicioGrabacionMuestreo = as.Date(FechaInicioGrabacionMuestreo),
@@ -36,85 +36,7 @@ resumen_html <- glue(
 
 HTML(resumen_html)
 ```
-
-#### Hábitats en los que se ubican las grabadoras:
-
-```{r, echo=FALSE}
-# gráfico hábitats
-
-library(forcats)
-library(stringr)
-library(ggimage)
-library(ggtext)
-
-#nuevos datos solo con las columnas que me interesan
-habitats_conteo <- ptos %>%
-  select(HabitatGenTipo, HabitatGeneral, HabitatTipo) %>%
-  arrange(HabitatGeneral) %>%
-  arrange(HabitatTipo) %>%
-  count(HabitatGenTipo)
-
-habitats_conteo2 <- ptos %>%
-  select(HabitatGeneral) %>%
-  arrange(HabitatGeneral) %>%
-  count(HabitatGeneral) %>%
-  mutate(HabitatGeneral = as.factor(HabitatGeneral),
-         NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
-         NombreCategoria = factor(NombreCategoria),
-         NombreCategoria = reorder(NombreCategoria, n),
-         icon = c('images/arboles.png','images/agricola.png','images/arbusto.png','images/humano.png','images/prado.png','images/agua.png'))
-
-
-# icono a la derecha del texto
-ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
-  geom_col(fill = "skyblue", width=0.5)+
-  ggtitle("Número de grabadoras en cada tipo de hábitat")+
-  labs(x="", y="")+
-  geom_text(aes(label=n, hjust=-1), size=4, colour="skyblue")+
-  geom_image(aes(x = -max(n)*0.08, image = icon), size = 0.05)+
-  #icono en la barra: geom_image(aes(image=icon), size=0.05, by='width', asp=1.0, nudge_x=-0.5)+
-  scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
-  theme_light()+
-  theme(
-    panel.grid.major.x = element_line(colour="#EBEBEB"),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor.x = element_line(colour="#EBEBEB"), 
-    panel.grid.minor.y = element_blank(),
-    panel.border = element_blank(), 
-    plot.title = element_text(face = "bold", size = 10, hjust = 0.5))
-
-# intento
-
-habitats_conteo2 <- ptos %>%
-  select(HabitatGeneral) %>%
-  arrange(HabitatGeneral) %>%
-  count(HabitatGeneral) %>%
-  mutate(HabitatGeneral = as.factor(HabitatGeneral),
-         NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
-         icon = c('images/arboles.png','images/arbusto.png','images/prado.png','images/agua.png','images/agricola.png','images/humano.png'),
-         #etiqueta = paste0(NombreCategoria, "  ", "<img src='", icon, "' width='30' style='vertical-align:middle; margin: 0 10px;'> ", "  "),
-         etiqueta = paste0(NombreCategoria, "<span style='display:inline-flex; align-items:center;'>", "<img src='", icon, "' width='20' style='margin-right:6px;'>", "</span>"),
-         etiqueta = factor(etiqueta, levels = etiqueta),
-         etiqueta = reorder(etiqueta, n))
-
-ggplot(habitats_conteo2, aes(x=n, y=etiqueta)) +
-  geom_col(fill = "skyblue", width=0.5) +
-  geom_text(aes(label=n, hjust=-0.2), size=4, colour="skyblue") +
-  ggtitle("Número de grabadoras en cada tipo de hábitat") +
-  labs(x="", y="") +
-  scale_x_continuous(expand = expansion(mult = c(0, 0.1))) +
-  theme_light() +
-  theme(
-    panel.grid.major.x = element_line(colour="#EBEBEB"),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor.x = element_line(colour="#EBEBEB"), 
-    panel.grid.minor.y = element_blank(),
-    panel.border = element_blank(),
-    plot.title = element_text(face = "bold", size = 10, hjust = 0.5),
-
-    # 👇 CLAVE: renderizar HTML en el eje
-    axis.text.y = element_markdown(size = 10))
-```
+#### ¿Dónde se ubican las grabadoras?
 
 ### Mapa
 
@@ -193,3 +115,82 @@ leaflet(cuad_con_info) %>%
   )
 
 ```
+&nbsp;
+
+&nbsp;
+
+
+```{r, echo=FALSE, warning=FALSE, out.width = "100%"}
+# gráfico hábitats
+
+library(forcats)
+library(stringr)
+library(ggimage)
+library(ggtext)
+
+#nuevos datos solo con las columnas que me interesan
+habitats_conteo <- ptos %>%
+  select(HabitatGenTipo, HabitatGeneral, HabitatTipo) %>%
+  arrange(HabitatGeneral) %>%
+  arrange(HabitatTipo) %>%
+  count(HabitatGenTipo)
+
+# https://wilkelab.org/ggtext/index.html
+habitats_conteo2 <- ptos %>%
+  select(HabitatGeneral) %>%
+  arrange(HabitatGeneral) %>%
+  count(HabitatGeneral) %>%
+  mutate(HabitatGeneral = as.factor(HabitatGeneral),
+         NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
+         NombreCategoria = factor(NombreCategoria),
+         NombreCategoria = reorder(NombreCategoria, n),
+         icon = c('images/arboles.png','images/arbusto.png','images/prado.png', 'images/agua.png','images/agricola.png','images/humano.png'),
+         etiqueta = paste0(NombreCategoria,"  ", "<img src='",icon,"' width='30' />"))
+
+ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
+  geom_col(fill = "skyblue", width=0.5)+
+  ggtitle("Hábitats")+
+  labs(x="Número de grabadoras", y="")+
+  geom_text(aes(label=n, hjust=-1), size=4, colour="skyblue")+
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
+  scale_y_discrete(name=NULL, labels=habitats_conteo2$etiqueta)+
+  theme_light()+
+  theme(
+    panel.grid.major.x = element_line(colour="#EBEBEB"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_line(colour="#EBEBEB"), 
+    panel.grid.minor.y = element_blank(),
+    panel.border = element_blank(), 
+    plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
+    axis.text.y = element_markdown(color= 'black', size = 10))
+```
+&nbsp;
+
+&nbsp;
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width = "100%"}
+#nuevos datos solo con las columnas que me interesan
+ccaas <- ptos %>%
+  select(CCAA) %>%
+  count(CCAA) %>%
+  mutate(
+    CCAA = reorder(CCAA, n))
+
+ggplot(ccaas, aes(x=n, y=CCAA))+
+  geom_col(fill = "seagreen3", width=0.5)+
+  ggtitle("Comunidades autónomas")+
+  labs(x="Número de grabadoras", y="")+
+  geom_text(aes(label=n, hjust=-1), size=4, colour="seagreen3")+
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
+  theme_light()+
+  theme(
+    panel.grid.major.x = element_line(colour="#EBEBEB"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_line(colour="#EBEBEB"), 
+    panel.grid.minor.y = element_blank(),
+    panel.border = element_blank(),
+    axis.text.y = element_text(size = 10),
+    plot.title = element_text(face = "bold", size = 12, hjust = 0.5))
+```
+
