@@ -44,6 +44,8 @@ HTML(resumen_html)
 
 library(forcats)
 library(stringr)
+library(ggimage)
+library(ggtext)
 
 #nuevos datos solo con las columnas que me interesan
 habitats_conteo <- ptos %>%
@@ -58,16 +60,20 @@ habitats_conteo2 <- ptos %>%
   count(HabitatGeneral) %>%
   mutate(HabitatGeneral = as.factor(HabitatGeneral),
          NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
-         NombreCategoria = factor(NombreCategoria, levels=rev(NombreCategoria)))
+         NombreCategoria = factor(NombreCategoria),
+         NombreCategoria = reorder(NombreCategoria, n),
+         icon = c('images/arboles.png','images/agricola.png','images/arbusto.png','images/humano.png','images/prado.png','images/agua.png'))
 
+
+# icono a la derecha del texto
 ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
   geom_col(fill = "skyblue", width=0.5)+
   ggtitle("Número de grabadoras en cada tipo de hábitat")+
   labs(x="", y="")+
   geom_text(aes(label=n, hjust=-1), size=4, colour="skyblue")+
+  geom_image(aes(x = -max(n)*0.08, image = icon), size = 0.05)+
+  #icono en la barra: geom_image(aes(image=icon), size=0.05, by='width', asp=1.0, nudge_x=-0.5)+
   scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
-  #scale_y_discrete(limits = rev(levels(habitats_conteo2$HabitatGeneral)))+
-  #scale_y_discrete(expand = c(0, 0))+
   theme_light()+
   theme(
     panel.grid.major.x = element_line(colour="#EBEBEB"),
@@ -76,6 +82,38 @@ ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
     panel.grid.minor.y = element_blank(),
     panel.border = element_blank(), 
     plot.title = element_text(face = "bold", size = 10, hjust = 0.5))
+
+# intento
+
+habitats_conteo2 <- ptos %>%
+  select(HabitatGeneral) %>%
+  arrange(HabitatGeneral) %>%
+  count(HabitatGeneral) %>%
+  mutate(HabitatGeneral = as.factor(HabitatGeneral),
+         NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
+         icon = c('images/arboles.png','images/arbusto.png','images/prado.png','images/agua.png','images/agricola.png','images/humano.png'),
+         #etiqueta = paste0(NombreCategoria, "  ", "<img src='", icon, "' width='30' style='vertical-align:middle; margin: 0 10px;'> ", "  "),
+         etiqueta = paste0(NombreCategoria, "<span style='display:inline-flex; align-items:center;'>", "<img src='", icon, "' width='20' style='margin-right:6px;'>", "</span>"),
+         etiqueta = factor(etiqueta, levels = etiqueta),
+         etiqueta = reorder(etiqueta, n))
+
+ggplot(habitats_conteo2, aes(x=n, y=etiqueta)) +
+  geom_col(fill = "skyblue", width=0.5) +
+  geom_text(aes(label=n, hjust=-0.2), size=4, colour="skyblue") +
+  ggtitle("Número de grabadoras en cada tipo de hábitat") +
+  labs(x="", y="") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1))) +
+  theme_light() +
+  theme(
+    panel.grid.major.x = element_line(colour="#EBEBEB"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.x = element_line(colour="#EBEBEB"), 
+    panel.grid.minor.y = element_blank(),
+    panel.border = element_blank(),
+    plot.title = element_text(face = "bold", size = 10, hjust = 0.5),
+
+    # 👇 CLAVE: renderizar HTML en el eje
+    axis.text.y = element_markdown(size = 10))
 ```
 
 ### Mapa

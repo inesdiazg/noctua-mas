@@ -12,7 +12,7 @@ website:
         text: Inicio
       - href: proyecto.qmd
         text: El proyecto
-      - href: mapa.qmd
+      - href: resultados.qmd
         text: Resumen de resultados
       - href: participar.qmd
         text: ¿Cómo participar?
