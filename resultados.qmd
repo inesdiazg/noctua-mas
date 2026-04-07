@@ -163,7 +163,7 @@ leaflet() %>%
   setView(lng = -3.7, lat = 40.4, zoom = 5) %>%
   addPolygons(
     data = cuad_con_info_25,
-    fillOpacity = 0.1,
+    fillOpacity = 0.2,
     color = "blue",
     weight = 1,
     popup = ~popup,
@@ -174,7 +174,7 @@ leaflet() %>%
     group = "Noctua+ 2025") %>%
   addPolygons(
     data = cuad_con_info_24,
-    fillOpacity = 0.1,
+    fillOpacity = 0.2,
     color = "red",
     weight = 1,
     popup = ~popup,
