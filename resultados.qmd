@@ -12,6 +12,7 @@ library(htmltools)
 library(sf)
 library(dplyr)
 library(ggplot2)
+library(stringr)
 ```
 
 ```{r setup, echo=FALSE}
@@ -125,11 +126,11 @@ popup_html_24 <- ptos_con_UTM_24 %>%
     popup = {
       # Datos de cada punto
       especies  <- rep("(aún no disponible)", dplyr::n())
-      inicio    <- Fecha.inicio
-      fin       <- Fecha.fin
+      inicio    <- str_extract(Fecha.inicio, "^[^,]+")
+      fin       <- str_extract(Fecha.fin, "^[^,]+")
 
       # Columnas con ancho mínimo
-      columnas <- paste0("<th style='padding:4px 12px; min-width:100px;'>", "Punto", "</th>", collapse = "")
+      columnas <- paste0("<th style='padding:4px 12px; min-width:100px;'>", "", "</th>", collapse = "")
       # fila_provincia    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", provincia, "</td>", collapse = "")
       fila_especies  <-paste0("<td style='padding:4px 12px; min-width:100px;'>", especies, "</td>", collapse = "")
       fila_inicio    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", inicio, "</td>", collapse = "")
