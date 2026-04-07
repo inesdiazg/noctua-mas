@@ -2,13 +2,13 @@
   text-align: justify !important;
 }
 
-/* css styles */
+/* botones */
 .cards-container {
   display: flex;
   gap: 20px;              /* espacio entre tarjetas */
   align-items: stretch;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .card-inicio {
@@ -17,7 +17,7 @@
   align-items: center;    /* centra vertical */
   justify-content: center;/* centra horizontal */
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
 
   background-color: #3f98d3 !important;
