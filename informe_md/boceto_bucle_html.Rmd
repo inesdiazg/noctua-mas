@@ -51,7 +51,7 @@ puntos <- puntos %>%
 
 <center>
 
-<h1>**Informe de resultados NOCTUA-Rec 2025**</h1>
+<h1>**Informe de resultados NOCTUA+ 2025**</h1>
 
 </center>
 
@@ -127,17 +127,12 @@ mapa <- leaflet(params$puntos) |>
 
 \* Ver <a href="https://atlasaves.seo.org/wp-content/uploads/2021/12/Anexo-3-ficha-habitat-atlas-rep-2014_17.pdf" target="_blank">ficha de hábitats de SEO/BirdLife</a>
 
-
-
 ## **Información sobre la grabadora**
 
-```{r crear_tabla_grabadora, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
+```{r crear_tabla_grab, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
 info_grab <- data.frame(
   id = character(),
-  esquema = character(),
-  ganancia = character(),
-  frec = character(),
-  periodo = character(),
+  grab = character(),
   mins = numeric(),
   dias_error = character(), # estos dos siguientes serían numeric()
   archivos = character(),
@@ -148,37 +143,99 @@ info_grab <- data.frame(
 info_grab <- info_grab %>%
   add_row(
     id = params$puntos$Grabadora.ID,
-    esquema = "Desde 1 h antes del atardecer hasta 2 h después: 1 minuto de cada 3 (60 minutos por noche)",
-    ganancia = params$puntos$Gain,
-    frec = glue("{params$puntos$Sample.rate} kHz"),
-    periodo = glue("{params$puntos$FechaInicioGrabacionMuestreo} - {params$puntos$FechaFinGrabacionMuestreo}"),
+    grab = glue("{params$puntos$Marca} {params$puntos$Modelo}"),
     mins = (params$puntos$Dias_Grabados_Campo*60),
     dias_error = "(días con error)",
     archivos = "(con la configuración actual, es igual al nº de minutos)",
     tarjetas = glue("{params$puntos$Tarjeta.Marca} {params$puntos$Tarjeta.Modelo} {params$puntos$Tarjeta.Capacidad}"),
-    pilas = params$puntos$Baterias
-  )
+    pilas = params$puntos$Baterias)
 
 info_grabt <- as.data.frame(t(info_grab))
-row.names(info_grabt) <- c("ID de la grabadora","Esquema de grabación","Ganancia","Frecuencia de muestreo","Periodo de grabación en el punto","Minutos grabados","Sesiones con datos incompletos", "Archivos generados","Tarjeta de memoria", "Baterías")
+row.names(info_grabt) <- c("ID de la grabadora","Marca y modelo","Minutos grabados","Sesiones con datos incompletos", "Archivos generados","Tarjeta de memoria", "Baterías")
 
 tabla_grab <- info_grabt %>%
   kbl(align = "l") %>%
   kable_styling(full_width = T, position = "left") %>%
   row_spec(0:nrow(info_grabt), extra_css = "border: 1px solid;") %>%
-  column_spec(1, background = "#D9D9D9") %>%
+  column_spec(1, width = "250px", background = "#D9D9D9") %>%
   row_spec(0, extra_css = "display: none;")
-
-
-# prueba 2
-
-
 ```
 
 ::: tabla-grab
 ```{r mostrar_tabla_grab, echo=FALSE}
     tabla_grab
 ```
+:::
+
+```{r crear_tabla_config, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
+config_grab <- data.frame(
+  esquema = character(),
+  ganancia = character(),
+  frec = character(),
+  periodo = character(),
+  stringsAsFactors = FALSE)
+
+config_grab <- config_grab %>%
+  add_row(
+    esquema = "Desde 1 h antes del atardecer* hasta 2 h después: 1 minuto de cada 3 (60 minutos por noche)",
+    ganancia = params$puntos$Gain,
+    frec = glue("{params$puntos$Sample.rate} kHz"),
+    periodo = glue("{params$puntos$FechaInicioGrabacionMuestreo} - {params$puntos$FechaFinGrabacionMuestreo}"))
+
+config_grabt <- as.data.frame(t(config_grab))
+row.names(config_grabt) <- c("Régimen de grabación","Ganancia","Frecuencia de muestreo","Periodo de grabación en el punto")
+
+tabla_config <- config_grabt %>%
+  kbl(align = "l") %>%
+  kable_styling(full_width = T, position = "left") %>%
+  row_spec(0:nrow(config_grabt), extra_css = "border: 1px solid;") %>%
+  column_spec(1, width = "250px", background = "#D9D9D9") %>%
+  row_spec(0, extra_css = "display: none;")
+```
+
+Configuración:  
+
+::: tabla-grab
+
+```{r mostrar_tabla_config, echo=FALSE}
+    tabla_config
+```
+
+:::
+
+```{r crear_tabla_coloc, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
+coloc_grab <- data.frame(
+  instalacion = character(),
+  retirada = character(),
+  altura = character(),
+  microhabitat= character(),
+  stringsAsFactors = FALSE)
+
+coloc_grab <- coloc_grab %>%
+  add_row(
+    instalacion = params$puntos$FechaInstalacion,
+    retirada = params$puntos$FechaRetirada,
+    altura = glue("{params$puntos$Altura} m"),
+    microhabitat = params$puntos$Microhabitat)
+
+coloc_grabt <- as.data.frame(t(coloc_grab))
+row.names(coloc_grabt) <- c("Fecha de instalación","Fecha de retirada","Altura","Microhábitat")
+
+tabla_coloc <- coloc_grabt %>%
+  kbl(align = "l") %>%
+  kable_styling(full_width = T, position = "left") %>%
+  row_spec(0:nrow(coloc_grabt), extra_css = "border: 1px solid;") %>%
+  column_spec(1, width = "250px", background = "#D9D9D9") %>%
+  row_spec(0, extra_css = "display: none;")
+```
+Instalación:  
+
+::: tabla-grab
+
+```{r mostrar_tabla_coloc, echo=FALSE}
+    tabla_coloc
+```
+
 :::
 
 ## **Comunidad de aves nocturnas**
