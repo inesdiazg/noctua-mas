@@ -1,6 +1,7 @@
 /* Tamaño base del documento */
 html {
   font-size: 14px;
+  padding-bottom: 100px;
 }
 
 body {
@@ -22,7 +23,9 @@ h3 {font-size: 1.2rem;
     padding-top: 8px;
     padding-left:5px;
 }
-
+h4 {padding-bottom: 7px;
+    padding-top: 10px;}
+    
 /* Tablas */
 table {
   font-size: 0.8rem !important;

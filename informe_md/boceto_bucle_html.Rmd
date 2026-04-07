@@ -125,7 +125,7 @@ mapa <- leaflet(params$puntos) |>
 :::
 :::::
 
-\* Ver <a href="https://atlasaves.seo.org/wp-content/uploads/2021/12/Anexo-3-ficha-habitat-atlas-rep-2014_17.pdf" target="_blank">ficha de hábitats de SEO/BirdLife</a>
+\* Ver <a href="https://seo.org/wp-content/uploads/2012/04/habitats_seo4.pdf" target="_blank">ficha de hábitats de SEO/BirdLife</a>
 
 ## **Información sobre la grabadora**
 
@@ -193,14 +193,12 @@ tabla_config <- config_grabt %>%
   row_spec(0, extra_css = "display: none;")
 ```
 
-Configuración:  
+Configuración:
 
 ::: tabla-grab
-
 ```{r mostrar_tabla_config, echo=FALSE}
     tabla_config
 ```
-
 :::
 
 ```{r crear_tabla_coloc, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
@@ -228,14 +226,13 @@ tabla_coloc <- coloc_grabt %>%
   column_spec(1, width = "250px", background = "#D9D9D9") %>%
   row_spec(0, extra_css = "display: none;")
 ```
-Instalación:  
+
+Instalación:
 
 ::: tabla-grab
-
 ```{r mostrar_tabla_coloc, echo=FALSE}
     tabla_coloc
 ```
-
 :::
 
 ## **Comunidad de aves nocturnas**
@@ -350,8 +347,6 @@ De media, el **autillo europeo** es el ave que antes empieza a vocalizar en la n
 
 </audio>
 
-(el audio reproducible solo funcionaría al mandar un html para abrir en el navegador, no con pdf)
-
 ```{r audio_especies, echo=FALSE, fig.width=12, fig.height=4}
 library(tuneR)
 library(seewave)
@@ -387,12 +382,14 @@ spectro(audio,
 
 (¿link a más audios de este punto? opción si se manda en pdf)
 
-## **Contacto**
-
-[direcciones de email de contacto/teléfonos]
-
 ## **Más información**
 
-Para ver los resultados globales del programa NOCTUA con grabadoras visita la web <a href="https://inesdiazg.github.io/noctua-map/" target="_blank">Noctua-Rec</a> (link de la web/informe global)
+Para ver los resultados globales del programa **NOCTUA con grabadoras** visita la web <a href="https://inesdiazg.github.io/noctua-mas/resultados" target="_blank">Noctua+</a>.
 
-[enlaces con más info (NOCTUA, programas de voluntariado de SEO…)]
+Para más información sobre el **programa NOCTUA** visita la <a href="https://seo.org/noctua-4/" target="_blank">web de SEO/BirdLife</a>.
+
+#### Contacto:
+
+![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="20"} [noctua\@seo.org](mailto:noctua@seo.org){.email}
+
+![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="20"}91 434 09 10
