@@ -11,12 +11,10 @@ library(glue)
 library(htmltools)
 library(sf)
 library(dplyr)
-library(ggplot2)
 library(stringr)
 ```
 
 ```{r setup, echo=FALSE}
-# resumen 
 ptos <- read.csv("datos/noctua_habitats.csv", sep = ",", header = T)
 ptos <- ptos %>%
   mutate(PuntoMuestreo = gsub("_", " ", PuntoMuestreo))
@@ -24,7 +22,8 @@ ptos <- ptos %>%
     # FechaInicioGrabacionMuestreo = format(FechaInicioGrabacionMuestreo, "%d/%m/%Y"),
     # FechaFinGrabacionMuestreo = as.Date(FechaFinGrabacionMuestreo),
     #FechaFinGrabacionMuestreo = format(FechaFinGrabacionMuestreo, "%d/%m/%Y"))
-
+```
+```{r resumen, echo=FALSE}
 resumen_html <- glue(
   "<ul>
     <li><b>Total de grabadoras:</b> {length(unique(ptos$Grabadora.ID))}</li>
@@ -37,6 +36,7 @@ resumen_html <- glue(
 
 HTML(resumen_html)
 ```
+
 
 #### ¿Dónde se ubican las grabadoras?
 
@@ -202,6 +202,9 @@ library(forcats)
 library(stringr)
 library(ggimage)
 library(ggtext)
+library(ggplot2)
+library(plotly)
+library(gapminder)
 
 #nuevos datos solo con las columnas que me interesan
 habitats_conteo <- ptos %>%
@@ -239,6 +242,50 @@ ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
     plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
     axis.text.y = element_markdown(color= 'black', size = 10))
 ```
+```{r}
+#| eval: false
+#| include: false
+library(plotly)
+library(dplyr)
+
+# Si necesitas ordenar como en ggplot
+df <- habitats_conteo2 %>%
+  arrange(n) %>%
+  mutate(NombreCategoria = factor(NombreCategoria, levels = NombreCategoria))
+
+fig <- plot_ly(
+  data = df,
+  x = ~n,
+  y = ~NombreCategoria,
+  type = "bar",
+  orientation = "h",
+  text = ~paste0(etiqueta, "<br><b>", n, "</b>"),
+  hoverinfo = "text",
+  marker = list(color = "skyblue"),
+  width = 800
+) %>%
+  layout(
+    title = list(text = "<b>Hábitats</b>", x = 0.5),
+    xaxis = list(
+      title = "Número de grabadoras",
+      showgrid = TRUE,
+      gridcolor = "#EBEBEB"
+    ),
+    yaxis = list(
+      title = "",
+      showgrid = FALSE
+    ),
+    plot_bgcolor = "white",
+    paper_bgcolor = "white"
+  ) %>%
+  highlight(
+    on = "plotly_hover",
+    opacityDim = 0.2
+  )
+
+fig
+```
+
 
  
 
