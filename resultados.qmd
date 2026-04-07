@@ -14,9 +14,9 @@ library(dplyr)
 library(ggplot2)
 ```
 
-```{r, echo=FALSE}
+```{r setup, echo=FALSE}
 # resumen 
-ptos <- read.csv("datos/noctua_habitats.csv", sep = ",")
+ptos <- read.csv("datos/noctua_habitats.csv", sep = ",", header = T)
 ptos <- ptos %>%
   mutate(PuntoMuestreo = gsub("_", " ", PuntoMuestreo))
     # FechaInicioGrabacionMuestreo = as.Date(FechaInicioGrabacionMuestreo),
@@ -36,24 +36,27 @@ resumen_html <- glue(
 
 HTML(resumen_html)
 ```
+
 #### ¿Dónde se ubican las grabadoras?
 
 ### Mapa
 
 Haz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula.
 
-```{r, echo=FALSE, message=FALSE, results=FALSE, warning=FALSE}
-ptos_sf <- st_as_sf(ptos, coords = c("Longitud", "Latitud"), crs = 4326)
+```{r crear_mapa, echo=FALSE, message=FALSE, results=FALSE, warning=FALSE}
+
+ptos_25 <- ptos
+ptos_sf_25 <- st_as_sf(ptos_25, coords = c("Longitud", "Latitud"), crs = 4326)
 
 # Cargar cuadrículas
 UTM <- st_read("datos/Malla10x10_Ter_p.shp") %>%
   st_transform(crs = 4326)
 
 # Unión espacial: asignar cada punto a la cuadrícula donde cae
-ptos_con_UTM <- st_join(ptos_sf, UTM, join = st_within)
+ptos_con_UTM_25 <- st_join(ptos_sf_25, UTM, join = st_within)
 
 # Crear HTML de popup transpuesto
-popup_html <- ptos_con_UTM %>%
+popup_html_25 <- ptos_con_UTM_25 %>%
   st_set_geometry(NULL) %>%
   group_by(UTMCODE) %>%
   summarise(
@@ -98,29 +101,100 @@ popup_html <- ptos_con_UTM %>%
   )
 
 # Unir info de popup a polígonos
-cuad_con_info <- UTM %>%
-  inner_join(popup_html, by = "UTMCODE")
+cuad_con_info_25 <- UTM %>%
+  inner_join(popup_html_25, by = "UTMCODE")
+
+#-----lo mismo para 2024:
+ptos_24 <- read.csv("datos/noctua-24.csv", sep = ";", header = T)
+ptos_24 <- ptos_24 %>%
+  filter(!is.na(Longitud), !is.na(Latitud))
+ptos_sf_24 <- st_as_sf(ptos_24, coords = c("Longitud", "Latitud"), crs = 4326)
+
+# Cargar cuadrículas
+UTM <- st_read("datos/Malla10x10_Ter_p.shp") %>%
+  st_transform(crs = 4326)
+
+# Unión espacial: asignar cada punto a la cuadrícula donde cae
+ptos_con_UTM_24 <- st_join(ptos_sf_24, UTM, join = st_within)
+
+# Crear HTML de popup transpuesto
+popup_html_24 <- ptos_con_UTM_24 %>%
+  st_set_geometry(NULL) %>%
+  group_by(UTMCODE) %>%
+  summarise(
+    popup = {
+      # Datos de cada punto
+      especies  <- rep("(aún no disponible)", dplyr::n())
+      inicio    <- Fecha.inicio
+      fin       <- Fecha.fin
+
+      # Columnas con ancho mínimo
+      columnas <- paste0("<th style='padding:4px 12px; min-width:100px;'>", "Punto", "</th>", collapse = "")
+      # fila_provincia    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", provincia, "</td>", collapse = "")
+      fila_especies  <-paste0("<td style='padding:4px 12px; min-width:100px;'>", especies, "</td>", collapse = "")
+      fila_inicio    <- paste0("<td style='padding:4px 12px; min-width:100px;'>", inicio, "</td>", collapse = "")
+      fila_fin       <- paste0("<td style='padding:4px 12px; min-width:100px;'>", fin, "</td>", collapse = "")
+ 
+      # Tabla envuelta en un div con scroll horizontal
+      paste0(
+        "<div style='overflow-x:auto; max-width:400px;'>",  # <- aquí ajusta el max-width del popup
+        "<table style='border-collapse: collapse; width: 100%; border: 1px solid #ccc;'>",
+        "<tr style='background-color:#f0f0f0;'><th style='padding:4px 12px;'></th>", columnas, "</tr>",
+        "<tr><th style='padding:4px 12px;'>Especies</th>", fila_especies, "</tr>",
+        "<tr><th style='padding:4px 12px;'>Inicio</th>", fila_inicio, "</tr>",
+        "<tr><th style='padding:4px 12px;'>Fin</th>", fila_fin, "</tr>",
+        "</table>",
+        "</div>"
+      )
+    },
+    .groups = "drop"
+  )
+
+# Unir info de popup a polígonos
+cuad_con_info_24 <- UTM %>%
+  inner_join(popup_html_24, by = "UTMCODE")
 ```
 
-```{r, echo= FALSE}
+```{r mostrar_mapa, echo= FALSE}
 # Crear mapa Leaflet
-leaflet(cuad_con_info) %>%
+leaflet() %>%
   addTiles() %>%
   setView(lng = -3.7, lat = 40.4, zoom = 5) %>%
   addPolygons(
+    data = cuad_con_info_25,
     fillOpacity = 0.1,
     color = "blue",
     weight = 1,
-    popup = ~popup
-  )
-
+    popup = ~popup,
+    highlightOptions = highlightOptions(
+      weight = 3,
+      color = "blue",
+      bringToFront = TRUE),
+    group = "Noctua+ 2025") %>%
+  addPolygons(
+    data = cuad_con_info_24,
+    fillOpacity = 0.1,
+    color = "red",
+    weight = 1,
+    popup = ~popup,
+    highlightOptions = highlightOptions(
+      weight = 3,
+      color = "red",
+      bringToFront = TRUE),
+    group = "Noctua+ 2024") %>%
+  addLayersControl(
+    baseGroups = c("Noctua+ 2025", "Noctua+ 2024"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  # Ocultar la capa 24 al inicio
+  hideGroup("Noctua+ 2024")
 ```
-&nbsp;
 
-&nbsp;
+ 
 
+ 
 
-```{r, echo=FALSE, warning=FALSE, out.width = "100%"}
+```{r graf_habitats, echo=FALSE, warning=FALSE, out.width = "100%"}
 # gráfico hábitats
 
 library(forcats)
@@ -164,12 +238,12 @@ ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
     plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
     axis.text.y = element_markdown(color= 'black', size = 10))
 ```
-&nbsp;
 
-&nbsp;
+ 
 
+ 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width = "100%"}
+```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, out.width = "100%"}
 #nuevos datos solo con las columnas que me interesan
 ccaas <- ptos %>%
   select(CCAA) %>%
@@ -193,4 +267,3 @@ ggplot(ccaas, aes(x=n, y=CCAA))+
     axis.text.y = element_text(size = 10),
     plot.title = element_text(face = "bold", size = 12, hjust = 0.5))
 ```
-
