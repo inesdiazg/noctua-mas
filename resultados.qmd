@@ -1,9 +1,9 @@
 ---
-title: "Resultados - NOCTUA+ 2025"
+title: "Resultados - NOCTUA+"
 lang: es
 ---
 
-## Resumen de los puntos de muestreo
+## Resumen 2025
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(leaflet)
@@ -191,7 +191,7 @@ leaflet() %>%
   hideGroup("Noctua+ 2024")
 ```
 
-## Hábitats
+## Hábitats 2025
 
 ```{r graf_habitats, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, out.width = "100%"}
 # gráfico hábitats
@@ -284,7 +284,7 @@ fig <- plot_ly(
 fig
 ```
 
-## Comunidades autónomas
+## Comunidades autónomas 2025
 
 ```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%"}
 #nuevos datos solo con las columnas que me interesan
