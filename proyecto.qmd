@@ -17,35 +17,39 @@ En el marco de esta colaboración, el equipo de trabajo durante el primer trimes
 El objetivo último del proyecto es diseñar una propuesta de **seguimiento de especies de aves diana mediante grabadores automáticos como apoyo al programa NOCTUA**. Para ello se requiere:
 :::
 
-::::::: contenedor-objetivos-proyecto
-::: card-objetivos
-<div class="contenido-card">
-  <img src="images/capacitacion.png" class="icono-objetivo"/>
-  <p>Capacitar a los voluntarios para desplegar y manejar las grabadoras</p>
-</div>
-:::
+::::::::::: contenedor-objetivos-proyecto
+:::: card-objetivos
+::: contenido-card
+<img src="images/capacitacion.png" class="icono-objetivo"/>
 
-::: card-objetivos
-<div class="contenido-card">
-  <img src="images/almacenamiento.png" class="icono-objetivo"/>
-  <p>Elaborar un sistema de almacenamiento y gestión de la información</p>
-</div>
+<p>Capacitar a los voluntarios para desplegar y manejar las grabadoras</p>
 :::
+::::
 
-::: card-objetivos
-<div class="contenido-card">
-  <img src="images/modelo.png" class="icono-objetivo"/>
-  <p>Desarrollar modelos de reconocimiento de sonido y determinar su desempeño</p>
-</div>
-:::
+:::: card-objetivos
+::: contenido-card
+<img src="images/almacenamiento.png" class="icono-objetivo"/>
 
-::: card-objetivos
-<div class="contenido-card">
-  <img src="images/tendencia.png" class="icono-objetivo"/>
-  <p>Elaborar índices que informen sobre las tendencias temporales de las especies</p>
-</div>
+<p>Elaborar un sistema de almacenamiento y gestión de la información</p>
 :::
-:::::::
+::::
+
+:::: card-objetivos
+::: contenido-card
+<img src="images/modelo2.png" class="icono-objetivo"/>
+
+<p>Desarrollar modelos de reconocimiento de sonido y determinar su desempeño</p>
+:::
+::::
+
+:::: card-objetivos
+::: contenido-card
+<img src="images/tendencia.png" class="icono-objetivo"/>
+
+<p>Elaborar índices que informen sobre las tendencias temporales de las especies</p>
+:::
+::::
+:::::::::::
 
 ## Equipo
 

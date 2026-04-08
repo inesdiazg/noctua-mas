@@ -18,7 +18,7 @@ website:
         text: ¿Cómo participar?
   page-footer:
     center:
-      - "© 2026 NOCTUA+<br>SEO/BirdLife  |  Universidad Autónoma de Madrid, Departamento de Ecología"
+      - "© 2026 NOCTUA+<br>Proyecto de colaboración:<br>SEO/BirdLife  |  Universidad Autónoma de Madrid, Departamento de Ecología"
     background: light
 
 format:
