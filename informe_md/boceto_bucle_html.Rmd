@@ -390,6 +390,6 @@ Para más información sobre el **programa NOCTUA** visita la <a href="https://s
 
 #### Contacto:
 
-![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="20"} [noctua\@seo.org](mailto:noctua@seo.org){.email}
+![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email}
 
-![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="20"}91 434 09 10
+![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="25"}91 434 09 10
