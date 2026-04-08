@@ -19,7 +19,6 @@ El objetivo último del proyecto es diseñar una propuesta de **seguimiento de e
 
 ::::::: contenedor-objetivos-proyecto
 ::: card-objetivos
-
 <div class="contenido-card">
   <img src="images/capacitacion.png" class="icono-objetivo"/>
   <p>Capacitar a los voluntarios para desplegar y manejar las grabadoras</p>
@@ -27,15 +26,24 @@ El objetivo último del proyecto es diseñar una propuesta de **seguimiento de e
 :::
 
 ::: card-objetivos
-Elaborar un sistema de almacenamiento y gestión de la información
+<div class="contenido-card">
+  <img src="images/almacenamiento.png" class="icono-objetivo"/>
+  <p>Elaborar un sistema de almacenamiento y gestión de la información</p>
+</div>
 :::
 
 ::: card-objetivos
-Desarrollar modelos de reconocimiento de sonido y determinar su desempeño
+<div class="contenido-card">
+  <img src="images/modelo.png" class="icono-objetivo"/>
+  <p>Desarrollar modelos de reconocimiento de sonido y determinar su desempeño</p>
+</div>
 :::
 
 ::: card-objetivos
-Elaborar índices que informen sobre las tendencias temporales de las especies
+<div class="contenido-card">
+  <img src="images/tendencia.png" class="icono-objetivo"/>
+  <p>Elaborar índices que informen sobre las tendencias temporales de las especies</p>
+</div>
 :::
 :::::::
 
