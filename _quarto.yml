@@ -27,7 +27,7 @@ format:
       - cosmo
     css: styles.css
     toc: true
-    include-after-body: body.html
+    include-after-body: buho.html
     grid:
       margin-width: 300px
 

@@ -3,7 +3,7 @@ title: "Resultados - NOCTUA+ 2025"
 lang: es
 ---
 
-### Resumen de los puntos de muestreo
+## Resumen de los puntos de muestreo
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(leaflet)
@@ -23,6 +23,7 @@ ptos <- ptos %>%
     # FechaFinGrabacionMuestreo = as.Date(FechaFinGrabacionMuestreo),
     #FechaFinGrabacionMuestreo = format(FechaFinGrabacionMuestreo, "%d/%m/%Y"))
 ```
+
 ```{r resumen, echo=FALSE}
 resumen_html <- glue(
   "<ul>
@@ -37,10 +38,9 @@ resumen_html <- glue(
 HTML(resumen_html)
 ```
 
+¿Dónde se ubican las grabadoras?
 
-#### ¿Dónde se ubican las grabadoras?
-
-### Mapa
+## Mapa
 
 Haz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula.
 
@@ -191,11 +191,9 @@ leaflet() %>%
   hideGroup("Noctua+ 2024")
 ```
 
- 
+## Hábitats
 
- 
-
-```{r graf_habitats, echo=FALSE, warning=FALSE, out.width = "100%"}
+```{r graf_habitats, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, out.width = "100%"}
 # gráfico hábitats
 
 library(forcats)
@@ -227,7 +225,6 @@ habitats_conteo2 <- ptos %>%
 
 ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
   geom_col(fill = "skyblue", width=0.5)+
-  ggtitle("Hábitats")+
   labs(x="Número de grabadoras", y="")+
   geom_text(aes(label=n, hjust=-1), size=4, colour="skyblue")+
   scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
@@ -242,6 +239,7 @@ ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
     plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
     axis.text.y = element_markdown(color= 'black', size = 10))
 ```
+
 ```{r}
 #| eval: false
 #| include: false
@@ -286,12 +284,9 @@ fig <- plot_ly(
 fig
 ```
 
+## Comunidades autónomas
 
- 
-
- 
-
-```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, out.width = "100%"}
+```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%"}
 #nuevos datos solo con las columnas que me interesan
 ccaas <- ptos %>%
   select(CCAA) %>%
@@ -301,7 +296,6 @@ ccaas <- ptos %>%
 
 ggplot(ccaas, aes(x=n, y=CCAA))+
   geom_col(fill = "seagreen3", width=0.5)+
-  ggtitle("Comunidades autónomas")+
   labs(x="Número de grabadoras", y="")+
   geom_text(aes(label=n, hjust=-1), size=4, colour="seagreen3")+
   scale_x_continuous(expand = expansion(mult = c(0, 0.1)))+
