@@ -12,14 +12,32 @@ En el marco de esta colaboración, el equipo de trabajo durante el primer trimes
 :::
 
 ## Objetivos
-::: justificado
-El objetivo último del proyecto es diseñar una propuesta de seguimiento de especies de aves diana mediante grabadores automáticos como apoyo al programa NOCTUA. Para ello se requiere, a modo de objetivos generales:
 
-1.  Capacitar a los voluntarios para desplegar y manejar las grabadoras
-2.  Elaborar un sistema de almacenamiento y gestión de la información
-3.  Desarrollar modelos de reconocimiento de sonido y determinar su desempeño
-4.  Elaborar índices que informen sobre las tendencias temporales de las especies\
+::: justificado
+El objetivo último del proyecto es diseñar una propuesta de **seguimiento de especies de aves diana mediante grabadores automáticos como apoyo al programa NOCTUA**. Para ello se requiere:
 :::
+
+::::::: contenedor-objetivos-proyecto
+::: card-objetivos
+
+<div class="contenido-card">
+  <img src="images/capacitacion.png" class="icono-objetivo"/>
+  <p>Capacitar a los voluntarios para desplegar y manejar las grabadoras</p>
+</div>
+:::
+
+::: card-objetivos
+Elaborar un sistema de almacenamiento y gestión de la información
+:::
+
+::: card-objetivos
+Desarrollar modelos de reconocimiento de sonido y determinar su desempeño
+:::
+
+::: card-objetivos
+Elaborar índices que informen sobre las tendencias temporales de las especies
+:::
+:::::::
 
 ## Equipo
 

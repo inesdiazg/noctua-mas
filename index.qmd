@@ -5,29 +5,14 @@ lang: es
 
 Ampliación del programa de seguimiento de aves nocturnas NOCTUA de SEO/BirdLife usando **monitoreo acústico pasivo** (MAP).
 
-```{r, echo=FALSE}
-library(glue)
-library(htmltools)
-
-imagenes <- glue(
-  "<div style='text-align:center; padding:10px;'>
-  <img src='images/noctua.jpg' height='120'>
-  <img src='images/noctua2.jpg' height='120'>
-  <img src='images/audiomoth.jpg' height='120'>
-</div>"
-)
-
-HTML(imagenes)
-```
-
-:::::: cards-container
+:::::: contenedor-botones-inicio
 ::: {.card-inicio onclick="location.href='proyecto.html'"}
 ¿En qué consiste el proyecto?\
 \
 ¿Quién conforma el equipo?
 :::
 
-::: {.card-inicio onclick="location.href='mapa.html'"}
+::: {.card-inicio onclick="location.href='resultados.html'"}
 ¿Cuántos puntos de muestreo hay y dónde se ubican?\
 \
 ¿Cuántas personas participan?
@@ -37,6 +22,21 @@ HTML(imagenes)
 ¿Cómo puedo participar?
 :::
 ::::::
+
+```{r, echo=FALSE}
+library(glue)
+library(htmltools)
+
+imagenes <- glue(
+  "<div style='text-align:center; padding:10px; padding-bottom:50px;'>
+  <img src='images/noctua.jpg' height='120'>
+  <img src='images/noctua2.jpg' height='120'>
+  <img src='images/audiomoth.jpg' height='120'>
+</div>"
+)
+
+HTML(imagenes)
+```
 
 ## Más información sobre...
 

@@ -2,3 +2,9 @@
 title: "¿Cómo participar?"
 lang: es
 ---
+
+Si quieres participar, ponte en contacto con las personas responsables del programa NOCTUA:
+
+![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email}
+
+![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="25"}91 434 09 10
