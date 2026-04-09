@@ -284,6 +284,54 @@ fig <- plot_ly(
 fig
 ```
 
+```{r}
+# prueba con plotly
+library(dplyr)
+library(plotly)
+
+habitats_conteo2 <- ptos %>%
+  count(HabitatGeneral) %>%
+  mutate(
+    NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
+    icon = c('images/arboles.png','images/arbusto.png','images/prado.png',
+             'images/agua.png','images/agricola.png','images/humano.png')
+  ) %>%
+  arrange(n)  # 👈 clave para legibilidad
+
+p <- plot_ly(
+  data = habitats_conteo2,
+  x = ~n,
+  y = ~reorder(NombreCategoria, n),
+  type = "bar",
+  orientation = "h",
+  # etiquetas
+  text = ~n,
+  textposition = "outside",
+  hovertemplate = "%{x}",
+  marker = list(color = "skyblue")) %>%
+  layout(
+    xaxis = list(
+      title = "Número de grabadoras",
+      gridcolor = "#EAEAEA",
+      zeroline = FALSE
+    ),
+    yaxis = list(
+      title = "",
+      showgrid = FALSE
+    ),
+    showlegend = FALSE,
+  
+    plot_bgcolor = "white",
+    paper_bgcolor = "white",
+    
+    margin = list(l = 120, r = 40, t = 40, b = 40)
+  )
+p <- p %>% config(displayModeBar = FALSE)
+
+# Mostrar gráfico
+p
+```
+
 ## Comunidades autónomas 2025
 
 ```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%"}
