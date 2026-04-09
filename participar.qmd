@@ -3,7 +3,7 @@ title: "¿Cómo participar?"
 lang: es
 ---
 
-Si quieres participar, ponte en contacto con las personas responsables del programa NOCTUA:
+Si quieres participar, ponte en contacto con las personas responsables del programa NOCTUA (Virginia Escandell y Juan Carlos del Moral):
 
 ![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email}
 
