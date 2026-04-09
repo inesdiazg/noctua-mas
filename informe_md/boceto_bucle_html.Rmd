@@ -70,11 +70,27 @@ info_punto <- data.frame(
   stringsAsFactors = FALSE)
 
 # 2. Crear html de la info del hábitat
-clean_na <- function(x) {ifelse(is.na(x) | x == "NA", "  ", x)} #función para limpiar NAs
+
+#función para limpiar NAs
+clean_na <- function(x) {ifelse(is.na(x) | x == "NA", "  ", x)} 
+
+#función para poner emoji delante del tipo general de hábitat
+icono_habitat <- function(x) {
+  if (is.na(x) || x == "NA") return("")
+  switch(x,
+    "A" = "<img src='images/arboles.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "B" = "<img src='images/arbusto.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "C" = "<img src='images/prado.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "D" = "<img src='images/agua.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "E" = "<img src='images/agricola.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "F" = "<img src='images/humano.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "")
+}
+
 habitat_html <- glue("
 <table style='width:100%; border-collapse: collapse; table-layout: fixed;'>
   <tr style='text-align:center;'>
-    <td style='border:1px solid #D9D9D9; padding:4px;'>{clean_na(params$puntos$HabitatGeneral)}</td>
+    <td style='border:1px solid #D9D9D9; padding:4px;'>{icono_habitat(params$puntos$HabitatGeneral)} {clean_na(params$puntos$HabitatGeneral)}</td>
     <td style='border:1px solid #D9D9D9; padding:4px;'>{clean_na(params$puntos$HabitatTipo)}</td>
     <td style='border:1px solid #D9D9D9; padding:4px;'>{clean_na(params$puntos$HabitatDetalle)}</td>
     <td style='border:1px solid #D9D9D9; padding:4px;'>{clean_na(params$puntos$HabitatMatorral)}</td>

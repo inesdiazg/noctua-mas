@@ -18,6 +18,7 @@ datos_bucle <- datos_bucle %>%
     FechaRetirada = format(FechaRetirada, "%d/%m/%Y")) %>%
   replace_with_na_at(.vars = c('HabitatDetalle','HabitatMatorral'), condition = ~.x == -99)
 datos_bucle <- head(datos_bucle, n=1) # Eliminar fila en la versión definitiva
+datos_bucle <- datos_bucle[11, ]
 
 # Crear los HTMLs
 for(i in 1:nrow(datos_bucle)) {
