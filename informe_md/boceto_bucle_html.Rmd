@@ -4,6 +4,9 @@ output:
   html_document:
     theme: flatly
     css: styles.css
+    toc: true
+    toc_float: true
+    toc_depth: 2
 params:
   puntos: NA
 pagetitle: "informe_punto_noctua"
@@ -51,13 +54,15 @@ puntos <- puntos %>%
 
 <center>
 
-<h1>**Informe de resultados NOCTUA+ 2025**</h1>
+::: titulo
+**Informe de resultados NOCTUA+ 2025**
+:::
 
 </center>
 
  
 
-## **Información sobre el punto**
+# **Información sobre el punto**
 
 ```{r crear_tabla_punto, echo=FALSE, message=FALSE, error=FALSE, results=FALSE}
 # 1. Crear dataframe vacío
@@ -143,7 +148,7 @@ mapa <- leaflet(params$puntos) |>
 
 \* Ver <a href="https://seo.org/wp-content/uploads/2012/04/habitats_seo4.pdf" target="_blank">ficha de hábitats de SEO/BirdLife</a>
 
-## **Información sobre la grabadora**
+# **Información sobre la grabadora**
 
 ```{r crear_tabla_grab, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
 info_grab <- data.frame(
@@ -251,7 +256,7 @@ Instalación:
 ```
 :::
 
-## **Comunidad de aves nocturnas**
+# **Comunidad de aves nocturnas**
 
 En tu punto de muestreo han vocalizado **4 especies**
 
@@ -263,7 +268,7 @@ En tu punto de muestreo han vocalizado **4 especies**
 
 -   Búho chico (*Asio otus*)
 
-### **¿Cuántas noches ha cantado cada especie?**
+## **¿Cuántas noches ha cantado cada especie?**
 
 ::::::: columns
 :::: column
@@ -279,7 +284,7 @@ El **mochuelo común** es el ave que ha cantado más número de noches.
 ::::
 :::::::
 
-### **¿Cuántas veces por noche ha cantado cada especie?**
+## **¿Cuántas veces por noche ha cantado cada especie?**
 
 ::::::: columns
 :::: column
@@ -295,7 +300,7 @@ El **autillo europeo** es el ave que más ha cantado cada noche, de media.
 ::::
 :::::::
 
-### **¿Cuánto tiempo ha cantado en total cada especie?**
+## **¿Cuánto tiempo ha cantado en total cada especie?**
 
 ::::::: columns
 :::: column
@@ -311,9 +316,9 @@ El **autillo europeo** es la especie qué más actividad acústica ha tenido.
 ::::
 :::::::
 
-## **Fenología - ¿Cuándo han cantado las aves nocturnas?**
+# **Fenología - ¿Cuándo han cantado las aves nocturnas?**
 
-### **Durante la temporada**
+## **Durante la temporada**
 
 ::::::: columns
 :::: column
@@ -331,7 +336,7 @@ El **autillo europeo** es la especie qué más actividad acústica ha tenido.
 ::::
 :::::::
 
-### **Durante la noche**
+## **Durante la noche**
 
 ::::::: columns
 :::: column
@@ -349,9 +354,9 @@ De media, el **autillo europeo** es el ave que antes empieza a vocalizar en la n
 ::::
 :::::::
 
-## **Ejemplos de grabaciones**
+# **Ejemplos de grabaciones**
 
-### **Especies**
+## **Especies**
 
 [fragmentos de audios de este punto, representativos de cada especie detectada o de algunas]
 
@@ -392,20 +397,20 @@ spectro(audio,
         flab = "Frecuencia (kHz)")
 ```
 
-### **Paisaje sonoro**
+## **Paisaje sonoro**
 
 [grabaciones reproducibles en distintos momentos del muestreo, si se manda el informe en html]
 
 (¿link a más audios de este punto? opción si se manda en pdf)
 
-## **Más información**
+# **Más información**
 
 Para ver los resultados globales del programa **NOCTUA con grabadoras** visita la web <a href="https://inesdiazg.github.io/noctua-mas/resultados" target="_blank">Noctua+</a>.
 
 Para más información sobre el **programa NOCTUA** visita la <a href="https://seo.org/noctua-4/" target="_blank">web de SEO/BirdLife</a>.
 
-#### Contacto:
+### Contacto:
 
-![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email}
+![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email} (Virginia Escandell y Juan Carlos del Moral)
 
 ![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="25"}91 434 09 10
