@@ -285,6 +285,8 @@ fig
 ```
 
 ```{r}
+#| eval: false
+#| include: false
 # prueba con plotly
 library(dplyr)
 library(plotly)
