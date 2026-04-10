@@ -32,5 +32,8 @@ format:
       margin-width: 300px
     self-contained: false
 
+resources:
+  - images
+
 editor: visual
 

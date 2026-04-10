@@ -257,12 +257,13 @@ habitats_conteo2 <- ptos %>%
 
 highchart() %>%
   hc_chart(type = "bar") %>%
-  hc_xAxis(categories = habitats_conteo2$NombreCategoria,
+  hc_xAxis(
+    categories = habitats_conteo2$NombreCategoria,
     labels = list(
       useHTML = TRUE,
       formatter = JS("
         function() {
-         const icons = {
+          const icons = {
             'Arbolados': '/images/arboles.png',
             'Arbustivos': '/images/arbusto.png',
             'Herbáceos': '/images/prado.png',
@@ -270,9 +271,19 @@ highchart() %>%
             'Agrícolas': '/images/agricola.png',
             'Humanizados': '/images/humano.png'
           };
-        return this.value + ' <img src=\"' + icons[this.value] + '\" width=\"30\" />';
-      }
-    "))) %>%
+          var category = this.value;
+          var icon = icons[category];
+            
+          if(icon) {
+            return category + ' <img src=\"' + icon + '\" width=\"40\" style=\"vertical-align: middle;\" />';
+          } else {
+            return category;
+          }
+        }
+      "),
+      style = list(fontSize = 40)
+      )
+    )%>%
   hc_add_series(
     name = "Número de grabadoras 2025",
     data = habitats_conteo2$n,
@@ -282,13 +293,14 @@ highchart() %>%
       pointPadding = 0.2,
       borderWidth = 0)) %>%
   hc_tooltip(
-  useHTML = TRUE,
-  formatter = JS("function() {return '<b>' + this.y + '</b>';}"))
+    useHTML = TRUE,
+    formatter = JS("function() {return '<b>' + this.y + '</b>';}")) %>%
+  hc_yAxis(min=0, max=70)
 ```
 
 ## Comunidades autónomas 2025
 
-```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%"}
+```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%", fig.show='hide'}
 #nuevos datos solo con las columnas que me interesan
 ccaas <- ptos %>%
   select(CCAA) %>%
@@ -310,4 +322,36 @@ ggplot(ccaas, aes(x=n, y=CCAA))+
     panel.border = element_blank(),
     axis.text.y = element_text(size = 10),
     plot.title = element_text(face = "bold", size = 12, hjust = 0.5))
+```
+
+```{r graf_ccaas2, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%"}
+#nuevos datos solo con las columnas que me interesan
+ccaas <- ptos %>%
+  select(CCAA) %>%
+  count(CCAA) %>%
+  mutate(
+    CCAA = reorder(CCAA, n)) %>%
+  arrange(desc(n))
+
+highchart() %>%
+  hc_chart(type = "bar") %>%
+  hc_xAxis(
+    categories = ccaas$CCAA,
+    labels = list(
+      useHTML = TRUE,
+      style = list(fontSize = 40)
+      )
+    )%>%
+  hc_add_series(
+    name = "Número de grabadoras 2025",
+    data = ccaas$n,
+    color = "#43cd80") %>%
+  hc_plotOptions(
+    bar = list(
+      pointPadding = 0.2,
+      borderWidth = 0)) %>%
+  hc_tooltip(
+    useHTML = TRUE,
+    formatter = JS("function() {return '<b>' + this.y + '</b>';}")) %>%
+  hc_yAxis(min=0, max=40)
 ```
