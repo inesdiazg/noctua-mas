@@ -185,15 +185,14 @@ leaflet() %>%
     group = "Noctua+ 2024") %>%
   addLayersControl(
     baseGroups = c("Noctua+ 2025", "Noctua+ 2024"),
-    options = layersControlOptions(collapsed = FALSE)
-  ) %>%
+    options = layersControlOptions(collapsed = FALSE)) %>%
   # Ocultar la capa 24 al inicio
   hideGroup("Noctua+ 2024")
 ```
 
 ## Hábitats 2025
 
-```{r graf_habitats, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, out.width = "100%"}
+```{r graf_habitats, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, out.width = "100%", fig.show='hide'}
 # gráfico hábitats
 
 library(forcats)
@@ -201,7 +200,6 @@ library(stringr)
 library(ggimage)
 library(ggtext)
 library(ggplot2)
-library(plotly)
 library(gapminder)
 
 #nuevos datos solo con las columnas que me interesan
@@ -240,98 +238,52 @@ ggplot(habitats_conteo2, aes(x=n, y=NombreCategoria))+
     axis.text.y = element_markdown(color= 'black', size = 10))
 ```
 
-```{r}
-#| eval: false
-#| include: false
-library(plotly)
+```{r graf_habitats2, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, out.width = "100%"}
 library(dplyr)
-
-# Si necesitas ordenar como en ggplot
-df <- habitats_conteo2 %>%
-  arrange(n) %>%
-  mutate(NombreCategoria = factor(NombreCategoria, levels = NombreCategoria))
-
-fig <- plot_ly(
-  data = df,
-  x = ~n,
-  y = ~NombreCategoria,
-  type = "bar",
-  orientation = "h",
-  text = ~paste0(etiqueta, "<br><b>", n, "</b>"),
-  hoverinfo = "text",
-  marker = list(color = "skyblue"),
-  width = 800
-) %>%
-  layout(
-    title = list(text = "<b>Hábitats</b>", x = 0.5),
-    xaxis = list(
-      title = "Número de grabadoras",
-      showgrid = TRUE,
-      gridcolor = "#EBEBEB"
-    ),
-    yaxis = list(
-      title = "",
-      showgrid = FALSE
-    ),
-    plot_bgcolor = "white",
-    paper_bgcolor = "white"
-  ) %>%
-  highlight(
-    on = "plotly_hover",
-    opacityDim = 0.2
-  )
-
-fig
-```
-
-```{r}
-#| eval: false
-#| include: false
-# prueba con plotly
-library(dplyr)
-library(plotly)
+library(highcharter)
+library(htmltools)
 
 habitats_conteo2 <- ptos %>%
+  select(HabitatGeneral) %>%
+  arrange(HabitatGeneral) %>%
   count(HabitatGeneral) %>%
-  mutate(
-    NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
-    icon = c('images/arboles.png','images/arbusto.png','images/prado.png',
-             'images/agua.png','images/agricola.png','images/humano.png')
-  ) %>%
-  arrange(n)  # 👈 clave para legibilidad
+  mutate(HabitatGeneral = as.factor(HabitatGeneral),
+         NombreCategoria = c('Arbolados','Arbustivos','Herbáceos','Acuáticos','Agrícolas','Humanizados'),
+         NombreCategoria = factor(NombreCategoria),
+         NombreCategoria = reorder(NombreCategoria, n),
+         icon = c('images/arboles.png','images/arbusto.png','images/prado.png', 'images/agua.png','images/agricola.png','images/humano.png'),
+         etiqueta = paste0(NombreCategoria,"  ", "<img src='",icon,"' width='30' />")) %>%
+  arrange(desc(n))
 
-p <- plot_ly(
-  data = habitats_conteo2,
-  x = ~n,
-  y = ~reorder(NombreCategoria, n),
-  type = "bar",
-  orientation = "h",
-  # etiquetas
-  text = ~n,
-  textposition = "outside",
-  hovertemplate = "%{x}",
-  marker = list(color = "skyblue")) %>%
-  layout(
-    xaxis = list(
-      title = "Número de grabadoras",
-      gridcolor = "#EAEAEA",
-      zeroline = FALSE
-    ),
-    yaxis = list(
-      title = "",
-      showgrid = FALSE
-    ),
-    showlegend = FALSE,
-  
-    plot_bgcolor = "white",
-    paper_bgcolor = "white",
-    
-    margin = list(l = 120, r = 40, t = 40, b = 40)
-  )
-p <- p %>% config(displayModeBar = FALSE)
-
-# Mostrar gráfico
-p
+highchart() %>%
+  hc_chart(type = "bar") %>%
+  hc_xAxis(categories = habitats_conteo2$NombreCategoria,
+    labels = list(
+      useHTML = TRUE,
+      formatter = JS("
+        function() {
+         const icons = {
+            'Arbolados': '/images/arboles.png',
+            'Arbustivos': '/images/arbusto.png',
+            'Herbáceos': '/images/prado.png',
+            'Acuáticos': '/images/agua.png',
+            'Agrícolas': '/images/agricola.png',
+            'Humanizados': '/images/humano.png'
+          };
+        return this.value + ' <img src=\"' + icons[this.value] + '\" width=\"30\" />';
+      }
+    "))) %>%
+  hc_add_series(
+    name = "Número de grabadoras 2025",
+    data = habitats_conteo2$n,
+    color = "skyblue") %>%
+  hc_plotOptions(
+    bar = list(
+      pointPadding = 0.2,
+      borderWidth = 0)) %>%
+  hc_tooltip(
+  useHTML = TRUE,
+  formatter = JS("function() {return '<b>' + this.y + '</b>';}"))
 ```
 
 ## Comunidades autónomas 2025

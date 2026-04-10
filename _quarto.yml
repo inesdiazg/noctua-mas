@@ -30,6 +30,7 @@ format:
     include-after-body: buho.html
     grid:
       margin-width: 300px
+    self-contained: false
 
 editor: visual
 
