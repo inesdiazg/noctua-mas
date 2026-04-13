@@ -262,12 +262,12 @@ highchart() %>%
       formatter = JS("
         function() {
           const icons = {
-            'Arbolados': '/images/arboles.png',
-            'Arbustivos': '/images/arbusto.png',
-            'Herbáceos': '/images/prado.png',
-            'Acuáticos': '/images/agua.png',
-            'Agrícolas': '/images/agricola.png',
-            'Humanizados': '/images/humano.png'
+            'Arbolados': 'images/arboles.png',
+            'Arbustivos': 'images/arbusto.png',
+            'Herbáceos': 'images/prado.png',
+            'Acuáticos': 'images/agua.png',
+            'Agrícolas': 'images/agricola.png',
+            'Humanizados': 'images/humano.png'
           };
           var category = this.value;
           var icon = icons[category];
