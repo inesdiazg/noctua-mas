@@ -3,7 +3,7 @@ title: "Especies de estudio"
 lang: es
 ---
 
-El programa NOCTUA se centra en el estudio de \_\_ especies de aves y \_\_ de ortópteros de la Península Ibérica. En esta infografía interactiva podrás conocer más sobre estas especies diana
+El programa NOCTUA se centra en el estudio de \_\_ especies de aves y \_\_ de ortópteros de la Península Ibérica. En esta infografía interactiva podrás conocer más sobre estas especies diana.
 
 :::: {style="width: 100%;"}
 ::: {style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"}
