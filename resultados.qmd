@@ -254,7 +254,7 @@ habitats_conteo2 <- ptos %>%
   arrange(desc(n))
 
 highchart() %>%
-  hc_chart(type = "bar") %>%
+  hc_chart(type = "bar", styledMode = FALSE) %>%
   hc_xAxis(
     categories = habitats_conteo2$NombreCategoria,
     labels = list(
@@ -274,12 +274,12 @@ highchart() %>%
           var icon = icons[category];
       
           if(icon) {
-            return '<span>' + category + '</span><br><img src=\"' + icon + '\" style=\"width:40px;\" />';
-          } else {
-            return category;
-          }
+          return '<span>' + category + '</span><br><img src=\"' + icon + '\" style=\"width:40px;\" />';
+        } else {
+          return category;
         }
-      "),
+      }
+    "),
       style = list(fontSize = 40)
       )
     )%>%
