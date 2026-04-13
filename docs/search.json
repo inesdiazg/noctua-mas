@@ -4,35 +4,35 @@
     "href": "resultados.html",
     "title": "Resultados - NOCTUA+",
     "section": "",
-    "text": "Total de grabadoras: 142\n  Número de responsables: 63\n  Cuadrículas UTM cubiertas: 70\n  Noches grabadas: 96.6 de media \n  (mínimo: 0, máximo: 169)\n\n\n\n¿Dónde se ubican las grabadoras?"
+    "text": "Total de grabadoras: 142\n  Número de responsables: 63\n  Cuadrículas UTM cubiertas: 70\n  Noches grabadas: 96.6 de media \n  (mínimo: 0, máximo: 169)"
   },
   {
     "objectID": "resultados.html#resumen-2025",
     "href": "resultados.html#resumen-2025",
     "title": "Resultados - NOCTUA+",
     "section": "",
-    "text": "Total de grabadoras: 142\n  Número de responsables: 63\n  Cuadrículas UTM cubiertas: 70\n  Noches grabadas: 96.6 de media \n  (mínimo: 0, máximo: 169)\n\n\n\n¿Dónde se ubican las grabadoras?"
+    "text": "Total de grabadoras: 142\n  Número de responsables: 63\n  Cuadrículas UTM cubiertas: 70\n  Noches grabadas: 96.6 de media \n  (mínimo: 0, máximo: 169)"
   },
   {
-    "objectID": "resultados.html#mapa",
-    "href": "resultados.html#mapa",
+    "objectID": "resultados.html#mapa---dónde-se-han-instalado-las-grabadoras",
+    "href": "resultados.html#mapa---dónde-se-han-instalado-las-grabadoras",
     "title": "Resultados - NOCTUA+",
-    "section": "Mapa",
-    "text": "Mapa\nHaz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula."
+    "section": "Mapa - ¿Dónde se han instalado las grabadoras?",
+    "text": "Mapa - ¿Dónde se han instalado las grabadoras?\nHaz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula."
   },
   {
-    "objectID": "resultados.html#hábitats-2025",
-    "href": "resultados.html#hábitats-2025",
+    "objectID": "resultados.html#hábitats",
+    "href": "resultados.html#hábitats",
     "title": "Resultados - NOCTUA+",
-    "section": "Hábitats 2025",
-    "text": "Hábitats 2025"
+    "section": "Hábitats",
+    "text": "Hábitats"
   },
   {
-    "objectID": "resultados.html#comunidades-autónomas-2025",
-    "href": "resultados.html#comunidades-autónomas-2025",
+    "objectID": "resultados.html#comunidades-autónomas",
+    "href": "resultados.html#comunidades-autónomas",
     "title": "Resultados - NOCTUA+",
-    "section": "Comunidades autónomas 2025",
-    "text": "Comunidades autónomas 2025"
+    "section": "Comunidades autónomas",
+    "text": "Comunidades autónomas"
   },
   {
     "objectID": "participar.html",
@@ -49,18 +49,39 @@
     "text": "Si quieres participar, ponte en contacto con las personas responsables del programa NOCTUA (Virginia Escandell y Juan Carlos del Moral):\n noctua@seo.org\n91 434 09 10"
   },
   {
-    "objectID": "participar.html#información-sobre-las-especies-diana",
-    "href": "participar.html#información-sobre-las-especies-diana",
+    "objectID": "participar.html#en-qué-consiste-el-programa-y-qué-implica-la-participación",
+    "href": "participar.html#en-qué-consiste-el-programa-y-qué-implica-la-participación",
     "title": "¿Cómo participar?",
-    "section": "Información sobre las especies diana",
-    "text": "Información sobre las especies diana"
+    "section": "¿En qué consiste el programa y qué implica la participación?",
+    "text": "¿En qué consiste el programa y qué implica la participación?\nEl programa NOCTUA+ realiza una campaña anual que comienza cada noviembre. Invitamos a todas aquellas personas amantes de la naturaleza que quieran sumarse a la iniciativa. Si te interesa participar, puedes inscribirte como voluntario o voluntaria del programa:\n\nEn diciembre, recibirás una grabadora para cada punto de muestreo que tengas asignado.\nPodrás participar en un taller online en el que se explicará cómo instalar las grabadoras.\nEl coste del envío y recogida de las grabadoras corre a cargo del programa.\nLas personas voluntarias interesadas podrán, además, participar en el análisis de las grabaciones para lo que recibirán formación específica mediante talleres online.\nLas personas inscritas han de comprometerse a realizar los censos habituales del programa NOCTUA durante __ años."
   },
   {
     "objectID": "participar.html#cómo-se-colocan-las-grabadoras",
     "href": "participar.html#cómo-se-colocan-las-grabadoras",
     "title": "¿Cómo participar?",
     "section": "¿Cómo se colocan las grabadoras?",
-    "text": "¿Cómo se colocan las grabadoras?"
+    "text": "¿Cómo se colocan las grabadoras?\nEn la siguiente infografía interactiva, se detallan las indicaciones y recomendaciones principales para la instalación de las grabadoras del programa NOCTUA+."
+  },
+  {
+    "objectID": "especies.html",
+    "href": "especies.html",
+    "title": "Especies de estudio",
+    "section": "",
+    "text": "El programa NOCTUA se centra en el estudio de __ especies de aves y __ de ortópteros de la Península Ibérica. En esta infografía interactiva podrás conocer más sobre estas especies diana"
+  },
+  {
+    "objectID": "equipo.html",
+    "href": "equipo.html",
+    "title": "Quiénes somos",
+    "section": "",
+    "text": "Javier Seoane (javier.seoane@uam.es)\nDiego Llusia (diego.llusia@uam.es)\nGuzmán Verde (guzman.verde@uam.es)\nInés Díaz (ines.diaz@uam.es)\n\n\n\n\n\n\nVirginia Escandell (vescandell@seo.org )\nJuan Carlos del Moral (jcdelmoral@seo.org )\nEmilio Escudero (eescudero@seo.org )"
+  },
+  {
+    "objectID": "equipo.html#equipo",
+    "href": "equipo.html#equipo",
+    "title": "Quiénes somos",
+    "section": "",
+    "text": "Javier Seoane (javier.seoane@uam.es)\nDiego Llusia (diego.llusia@uam.es)\nGuzmán Verde (guzman.verde@uam.es)\nInés Díaz (ines.diaz@uam.es)\n\n\n\n\n\n\nVirginia Escandell (vescandell@seo.org )\nJuan Carlos del Moral (jcdelmoral@seo.org )\nEmilio Escudero (eescudero@seo.org )"
   },
   {
     "objectID": "index.html",
@@ -103,12 +124,5 @@
     "title": "El proyecto",
     "section": "Objetivos",
     "text": "Objetivos\n\nEl objetivo último del proyecto es diseñar una propuesta de seguimiento de especies de aves diana mediante grabadores automáticos como apoyo al programa NOCTUA. Para ello se requiere:\n\n\n\n\n\n\nCapacitar a los voluntarios para desplegar y manejar las grabadoras\n\n\n\n\n\n\n\nElaborar un sistema de almacenamiento y gestión de la información\n\n\n\n\n\n\n\nDesarrollar modelos de reconocimiento de sonido y determinar su desempeño\n\n\n\n\n\n\n\nElaborar índices que informen sobre las tendencias temporales de las especies"
-  },
-  {
-    "objectID": "proyecto.html#equipo",
-    "href": "proyecto.html#equipo",
-    "title": "El proyecto",
-    "section": "Equipo",
-    "text": "Equipo\n\n\n\nEquipo de trabajo en la UAM:\n\nJavier Seoane (javier.seoane@uam.es)\nDiego Llusia (diego.llusia@uam.es)\nGuzmán Verde (guzman.verde@uam.es)\nInés Díaz (ines.diaz@uam.es)\n\n\n\n\nEquipo de trabajo en SEO/BirdLife:\n\nVirginia Escandell (vescandell@seo.org )\nJuan Carlos del Moral (jcdelmoral@seo.org )\nEmilio Escudero (eescudero@seo.org )"
   }
 ]

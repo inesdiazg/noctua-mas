@@ -11,10 +11,28 @@ Si quieres participar, ponte en contacto con las personas responsables del progr
 
 ![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="25"}91 434 09 10
 
-## Información sobre las especies diana
+## ¿En qué consiste el programa y qué implica la participación?
 
-<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"><iframe title="NOCTUA-Sonidos" frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genially.com/692ee2f4a261942027787b57" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe></div></div>
+El programa NOCTUA+ realiza una **campaña anual que comienza cada noviembre**. Invitamos a todas aquellas personas amantes de la naturaleza que quieran sumarse a la iniciativa. Si te interesa participar, puedes inscribirte como voluntario o voluntaria del programa:
+
+-   En diciembre, **recibirás una grabadora** para cada punto de muestreo que tengas asignado.
+
+-   Podrás participar en un **taller online** en el que se explicará cómo instalar las grabadoras.
+
+-   El **coste** del envío y recogida de las grabadoras corre **a cargo del programa**.
+
+-   Las personas voluntarias interesadas podrán, además, **participar en el análisis de las grabaciones** para lo que recibirán formación específica mediante talleres online.
+
+-   Las personas inscritas han de **comprometerse** a realizar los censos habituales del programa NOCTUA durante \_\_ años.
 
 ## ¿Cómo se colocan las grabadoras?
 
-<div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"><iframe title="NOCTUA-grabadoras" frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genially.com/67ab56b0cc1c4e88f3cf3a2d" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe></div></div>
+En la siguiente infografía interactiva, se detallan las indicaciones y recomendaciones principales para la instalación de las grabadoras del programa NOCTUA+.
+
+:::: {style="width: 100%;"}
+::: {style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"}
+<iframe title="NOCTUA-grabadoras" frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genially.com/67ab56b0cc1c4e88f3cf3a2d" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all">
+
+</iframe>
+:::
+::::

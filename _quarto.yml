@@ -16,6 +16,10 @@ website:
         text: Resumen de resultados
       - href: participar.qmd
         text: ¿Cómo participar?
+      - href: equipo.qmd
+        text: Equipo
+      - href: especies.qmd
+        text: Especies de estudio
   page-footer:
     center:
       - "© 2026 NOCTUA+<br>Proyecto de colaboración:<br>SEO/BirdLife  |  Universidad Autónoma de Madrid, Departamento de Ecología"

@@ -38,9 +38,7 @@ resumen_html <- glue(
 HTML(resumen_html)
 ```
 
-¿Dónde se ubican las grabadoras?
-
-## Mapa
+## Mapa - ¿Dónde se han instalado las grabadoras?
 
 Haz clic en cada cuadrícula para ver la información sobre los puntos de muestreo ubicados en esa cuadrícula.
 
@@ -190,7 +188,7 @@ leaflet() %>%
   hideGroup("Noctua+ 2024")
 ```
 
-## Hábitats 2025
+## Hábitats
 
 ```{r graf_habitats, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, out.width = "100%", fig.show='hide'}
 # gráfico hábitats
@@ -285,7 +283,7 @@ highchart() %>%
       )
     )%>%
   hc_add_series(
-    name = "Número de grabadoras 2025",
+    name = "Número de grabadoras (2025)",
     data = habitats_conteo2$n,
     color = "skyblue") %>%
   hc_plotOptions(
@@ -298,7 +296,7 @@ highchart() %>%
   hc_yAxis(min=0, max=70)
 ```
 
-## Comunidades autónomas 2025
+## Comunidades autónomas
 
 ```{r graf_ccaas, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, out.width = "100%", fig.show='hide'}
 #nuevos datos solo con las columnas que me interesan
@@ -343,7 +341,7 @@ highchart() %>%
       )
     )%>%
   hc_add_series(
-    name = "Número de grabadoras 2025",
+    name = "Número de grabadoras (2025)",
     data = ccaas$n,
     color = "#43cd80") %>%
   hc_plotOptions(
