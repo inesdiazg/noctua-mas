@@ -269,11 +269,12 @@ highchart() %>%
             'Agrícolas': 'images/agricola.png',
             'Humanizados': 'images/humano.png'
           };
+      
           var category = this.value;
           var icon = icons[category];
-            
+      
           if(icon) {
-            return category + ' <img src=\"' + icon + '\" width=\"40\" style=\"vertical-align: middle;\" />';
+            return '<span>' + category + '</span><br><img src=\"' + icon + '\" style=\"width:40px;\" />';
           } else {
             return category;
           }
