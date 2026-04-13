@@ -83,12 +83,12 @@ clean_na <- function(x) {ifelse(is.na(x) | x == "NA", "  ", x)}
 icono_habitat <- function(x) {
   if (is.na(x) || x == "NA") return("")
   switch(x,
-    "A" = "<img src='images/arboles.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
-    "B" = "<img src='images/arbusto.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
-    "C" = "<img src='images/prado.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
-    "D" = "<img src='images/agua.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
-    "E" = "<img src='images/agricola.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
-    "F" = "<img src='images/humano.png' style='height:30px; vertical-align:middle; padding-right:4px;'>",
+    "A" = "<img src='images/arboles.png' style='height:32px; vertical-align:middle; padding-right:4px;'>",
+    "B" = "<img src='images/arbusto.png' style='height:32px; vertical-align:middle; padding-right:4px;'>",
+    "C" = "<img src='images/prado.png' style='height:32px; vertical-align:middle; padding-right:4px;'>",
+    "D" = "<img src='images/agua.png' style='height:32px; vertical-align:middle; padding-right:4px;'>",
+    "E" = "<img src='images/agricola.png' style='height:32px; vertical-align:middle; padding-right:4px;'>",
+    "F" = "<img src='images/humano.png' style='height:32px; vertical-align:middle; padding-right:4px;'>",
     "")
 }
 
@@ -148,7 +148,9 @@ mapa <- leaflet(params$puntos) |>
 
 \* Ver <a href="https://seo.org/wp-content/uploads/2012/04/habitats_seo4.pdf" target="_blank">ficha de hábitats de SEO/BirdLife</a>
 
-# **Información sobre la grabadora**
+# **Información sobre el muestreo**
+
+### Grabadora:
 
 ```{r crear_tabla_grab, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
 info_grab <- data.frame(
@@ -190,7 +192,8 @@ tabla_grab <- info_grabt %>%
 
 ```{r crear_tabla_config, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
 config_grab <- data.frame(
-  esquema = character(),
+  horario = character(),
+  regimen = character(),
   ganancia = character(),
   frec = character(),
   periodo = character(),
@@ -198,13 +201,14 @@ config_grab <- data.frame(
 
 config_grab <- config_grab %>%
   add_row(
-    esquema = "Desde 1 h antes del atardecer* hasta 2 h después: 1 minuto de cada 3 (60 minutos por noche)",
+    horario = "Desde 1 h antes del atardecer* hasta 2 h después",
+    regimen = "1 minuto de cada 3 (60 minutos por noche)",
     ganancia = params$puntos$Gain,
     frec = glue("{params$puntos$Sample.rate} kHz"),
     periodo = glue("{params$puntos$FechaInicioGrabacionMuestreo} - {params$puntos$FechaFinGrabacionMuestreo}"))
 
 config_grabt <- as.data.frame(t(config_grab))
-row.names(config_grabt) <- c("Régimen de grabación","Ganancia","Frecuencia de muestreo","Periodo de grabación en el punto")
+row.names(config_grabt) <- c("Horario de grabación","Régimen de grabación","Ganancia","Frecuencia de muestreo","Periodo de grabación en el punto")
 
 tabla_config <- config_grabt %>%
   kbl(align = "l") %>%
@@ -214,7 +218,7 @@ tabla_config <- config_grabt %>%
   row_spec(0, extra_css = "display: none;")
 ```
 
-Configuración:
+### Configuración:
 
 ::: tabla-grab
 ```{r mostrar_tabla_config, echo=FALSE}
@@ -222,43 +226,47 @@ Configuración:
 ```
 :::
 
-```{r crear_tabla_coloc, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
-coloc_grab <- data.frame(
+\*La hora del atardecer se configuró para cada grabadora teniendo en cuenta la ubicación del punto de muestreo.
+
+```{r crear_tabla_inst, echo=FALSE, message=FALSE, error=FALSE, results=FALSE, warning=FALSE}
+inst_grab <- data.frame(
   instalacion = character(),
   retirada = character(),
   altura = character(),
   microhabitat= character(),
   stringsAsFactors = FALSE)
 
-coloc_grab <- coloc_grab %>%
+inst_grab <- inst_grab %>%
   add_row(
     instalacion = params$puntos$FechaInstalacion,
     retirada = params$puntos$FechaRetirada,
     altura = glue("{params$puntos$Altura} m"),
     microhabitat = params$puntos$Microhabitat)
 
-coloc_grabt <- as.data.frame(t(coloc_grab))
-row.names(coloc_grabt) <- c("Fecha de instalación","Fecha de retirada","Altura","Microhábitat")
+inst_grabt <- as.data.frame(t(inst_grab))
+row.names(inst_grabt) <- c("Fecha de instalación","Fecha de retirada","Altura","Microhábitat")
 
-tabla_coloc <- coloc_grabt %>%
+tabla_inst <- inst_grabt %>%
   kbl(align = "l") %>%
   kable_styling(full_width = T, position = "left") %>%
-  row_spec(0:nrow(coloc_grabt), extra_css = "border: 1px solid;") %>%
+  row_spec(0:nrow(inst_grabt), extra_css = "border: 1px solid;") %>%
   column_spec(1, width = "250px", background = "#D9D9D9") %>%
   row_spec(0, extra_css = "display: none;")
 ```
 
-Instalación:
+### Instalación:
 
 ::: tabla-grab
-```{r mostrar_tabla_coloc, echo=FALSE}
-    tabla_coloc
+```{r mostrar_tabla_inst, echo=FALSE}
+    tabla_inst
 ```
 :::
 
-# **Comunidad de aves nocturnas**
+# **Información sobre las aves nocturnas (composición y actividad)**
 
-En tu punto de muestreo han vocalizado **4 especies**
+## **Especies detectadas**
+
+Un total de **4 especies de aves nocturnas** han sido detectadas durante este periodo de muestreo, gracias al análisis de las grabaciones.
 
 -   Autillo europeo (*Otus scops*)
 
@@ -273,29 +281,29 @@ En tu punto de muestreo han vocalizado **4 especies**
 ::::::: columns
 :::: column
 ::: card-graficos
-![](images/grafico1.png){width="259"}
+![](images/grafico1.png){width="326"}
 :::
 ::::
 
 :::: column
 ::: card
-El **mochuelo común** es el ave que ha cantado más número de noches.
+El **mochuelo común** es el ave nocturna que ha cantado más número de noches.
 :::
 ::::
 :::::::
 
-## **¿Cuántas veces por noche ha cantado cada especie?**
+## **¿Cuántas veces ha cantado (de media) cada especie durante las noches en las que ha estado activa?**
 
 ::::::: columns
 :::: column
 ::: card-graficos
-![](images/grafico2.png){width="291"}
+![](images/grafico2.png){width="334"}
 :::
 ::::
 
 :::: column
 ::: card
-El **autillo europeo** es el ave que más ha cantado cada noche, de media.
+El **autillo europeo** es el ave nocturna que más ha cantado cada noche, de media.
 :::
 ::::
 :::::::
@@ -305,33 +313,37 @@ El **autillo europeo** es el ave que más ha cantado cada noche, de media.
 ::::::: columns
 :::: column
 ::: card-graficos
-![](images/grafico3.png){width="262"}
+![](images/grafico3.png){width="300"}
 :::
 ::::
 
 :::: column
 ::: card
-El **autillo europeo** es la especie qué más actividad acústica ha tenido.
+El **autillo europeo** es la especie que ha mostrado una actividad acústica más prolongada durante el periodo de muestreo.
 :::
 ::::
 :::::::
 
-# **Fenología - ¿Cuándo han cantado las aves nocturnas?**
+# **Información sobre los periodos de actividad (fenología)**
 
 ## **Durante la temporada**
 
 ::::::: columns
 :::: column
 ::: card-graficos
-![](images/grafico4.png){width="294"}
+![](images/grafico4.png){width="353"}
 
-(gráfico de violín con densidad de vocalizaciones a lo largo de los meses)
+Número de vocalizaciones por noche a lo largo del muestreo
 :::
 ::::
 
 :::: column
 ::: card
-[Primera y última especie en vocalizar en la temporada]
+-   El **autillo europeo** ha sido la primera especie en comenzar la actividad acústica durante la temporada de muestreo.
+
+-   El **chotacabras europeo** ha sido la última especie en concluir la actividad acústica.
+
+-   El **autillo europeo** ha sido la especie con la actividad más prolongada.
 :::
 ::::
 :::::::
@@ -341,15 +353,19 @@ El **autillo europeo** es la especie qué más actividad acústica ha tenido.
 ::::::: columns
 :::: column
 ::: card-graficos
-![](images/clipboard-2050271921.png)
+![](images/clipboard-2050271921.png){width="333"}
 
-(gráfico: media del primer y último minuto respecto al atardecer en el que hay vocalizaciones de cada especie)
+Media del primer y último minuto respecto al atardecer en el que hay vocalizaciones de cada especie.
 :::
 ::::
 
 :::: column
 ::: card
-De media, el **autillo europeo** es el ave que antes empieza a vocalizar en la noche, mientras que el **chotacabras cuellirrojo** es la última.
+-   De media, el **autillo europeo** ha sido la primera especie en comenzar a vocalizar durante la noche.
+
+-   De media, el **chotacabras cuellirojo** ha sido la última especie en terminar de vocalizar.
+
+-   De media, el **autillo europeo** ha sido la especie con la actividad más prolongada durante la noche.
 :::
 ::::
 :::::::
@@ -405,12 +421,62 @@ spectro(audio,
 
 # **Más información**
 
-Para ver los resultados globales del programa **NOCTUA con grabadoras** visita la web <a href="https://inesdiazg.github.io/noctua-mas/resultados" target="_blank">Noctua+</a>.
+Para ver los resultados globales del programa **NOCTUA+** visita la web <a href="https://inesdiazg.github.io/noctua-mas/resultados" target="_blank">Noctua+</a>. [IMPORTANTE modificar el link en el futuro]
 
-Para más información sobre el **programa NOCTUA** visita la <a href="https://seo.org/noctua-4/" target="_blank">web de SEO/BirdLife</a>.
+Para más información sobre el **programa NOCTUA,** visita la <a href="https://seo.org/noctua-4/" target="_blank">web de SEO/BirdLife</a>.
 
 ### Contacto:
 
-![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email} (Virginia Escandell y Juan Carlos del Moral)
+![](images/email.png){style="vertical-align: text-top; margin-right: 7px;" width="25"} [noctua\@seo.org](mailto:noctua@seo.org){.email} (Virginia Escandell)
 
 ![](images/telefono.png){style="vertical-align: text-top; margin-right: 7px;" width="25"}91 434 09 10
+
+# **Equipo**
+
+Este informe ha sido elaborado por el equipo del programa **NOCTUA+**:
+
+::::::::: columns
+::::: column
+:::: card-equipo
+### Equipo de trabajo en la UAM:
+
+-   Javier Seoane
+
+-   Diego Llusia
+
+-   Guzmán Verde
+
+-   Inés Díaz
+
+Más información sobre en la <a href="https://teguam.es/" target="_blank">web del TEG-UAM</a>.
+
+::: {style="display: flex; justify-content: left; align-items: left; padding-top: 10px;"}
+<img src="images/uam_solo.png" style="width:120px; height:auto; padding-right:10px;"/> <img src="images/teg.png" style="width:120px; height:auto;"/>
+:::
+::::
+:::::
+
+::::: column
+:::: card-equipo
+### Equipo de trabajo en SEO/BirdLife:
+
+-   Virginia Escandell
+
+-   Juan Carlos del Moral
+
+-   Emilio Escudero
+
+Más información en la <a href="https://seo.org/" target="_blank">web de SEO/BirdLife</a>.
+
+::: {style="text-align: left; padding-top: 10px;"}
+<img src="images/seo.png" style="width:120px; height:auto;"/>
+:::
+::::
+:::::
+:::::::::
+
+::: agradecimientos
+**¡Muchas gracias por tu participación en el programa NOCTUA+!**
+
+Esperamos contar contigo el próximo año
+:::

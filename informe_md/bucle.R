@@ -21,6 +21,7 @@ datos_bucle <- head(datos_bucle, n=1) # Eliminar fila en la versión definitiva
 datos_bucle <- datos_bucle[11, ]
 
 # Crear los HTMLs
+
 for(i in 1:nrow(datos_bucle)) {
   render("boceto_bucle_html.Rmd",
          output_file = paste0("informe_", datos_bucle$PuntoMuestreo[i], ".html"),

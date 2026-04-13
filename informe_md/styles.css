@@ -1,16 +1,20 @@
 /* Tamaño base del documento */
 html {
-  font-size: 14px;
+  font-size: 15px;
   padding-bottom: 100px;
 }
 
 body {
-  font-size: 1rem;   /* 1rem = 14px ahora */
+  font-size: 1rem;/* 1rem = 14px ahora */
+  padding-top: 10px;
 }
 
 /* Títulos */
 .titulo{
-  font-size: 2.4rem; text-align: center; padding-bottom: 10px
+  font-size: 2.6rem;
+  text-align: center;
+  margin-top: 40px;
+
 }
 
 /* h1 {font-size: 2.4rem; text-align: center; padding-bottom: 10px} */
@@ -19,26 +23,31 @@ h1 {font-size: 1.4rem;
     background-color: #0C5387;
     padding-bottom: 10px;
     padding-top: 10px;
-    padding-left:5px;
+    padding-left: 5px;
+    margin-top: 35px;
+    margin-bottom: 30px;
 }
 h2 {font-size: 1.2rem;
     background-color: lightblue;
     padding-bottom: 8px;
     padding-top: 8px;
-    padding-left:5px;
+    padding-left: 5px;
+    margin-top: 30px;
+    margin-bottom: 28px;
 }
-h3 {padding-bottom: 7px;
-    padding-top: 10px;
+h3 {font-size: 1.1rem;
+    padding-bottom: 8px;
+    padding-top: 6px;
     font-weight: bold;
 }
     
 /* Tablas */
 table {
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
 }
 
 th, td {
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
 }
 
 @media print {
@@ -75,13 +84,13 @@ th, td {
   align-items: stretch; /* hace que los hijos tengan la misma altura */
   height: 210px;
   padding-top: 10px;
+  margin-bottom: 30px;
 }
 
 /* Cada columna ocupa 50% y respeta el padding */
 .flex-item-left {
   width: 50%;
   padding-right: 15px;
-  padding-bottom: 30px;
 }
 
 .flex-item-right {
@@ -89,11 +98,11 @@ th, td {
   padding-left: 15px;
 }
 
-/* Contenedor para tabla grabadoras */
+/* Contenedor para tablas grabadoras */
 
 .tabla-grab {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  margin-top: 18px;
+  margin-bottom: 25px;
 }
 
 /* El mapa ocupa todo el ancho y altura del contenedor */
@@ -105,4 +114,15 @@ th, td {
 
 .card-graficos {
   border:none;
+}
+
+.card-equipo {
+  border:none;
+}
+
+.agradecimientos {
+  font-size: 1.8rem;
+  text-align: center;
+  padding-top: 40px;
+  color: #0C5387;
 }
