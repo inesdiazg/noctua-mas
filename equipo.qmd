@@ -2,12 +2,16 @@
 title: "Quiénes somos"
 lang: es
 ---
+
 ## Equipo
 
-::::::: columns
-:::: column
-::: card-equipo
-#### Equipo de trabajo en la UAM:
+::::::::: columns
+::::: column
+:::: card-equipo
+::: {style="display: flex; justify-content: left; align-items: left; padding-top: 10px;"}
+<img src="images/uam_solo.png" style="width:auto; height:70px;"/>
+:::
+#### Equipo de trabajo en la <a href="https://www.uam.es/" target="_blank">UAM</a>:
 
 -   Javier Seoane ([javier.seoane\@uam.es](mailto:javier.seoane@uam.es))
 
@@ -16,18 +20,24 @@ lang: es
 -   Guzmán Verde ([guzman.verde\@uam.es](mailto:guzman.verde@uam.es))
 
 -   Inés Díaz ([ines.diaz\@uam.es](mailto:ines.diaz@uam.es))
-:::
-::::
 
-:::: column
-::: card-equipo
-#### Equipo de trabajo en SEO/BirdLife:
+::::
+:::::
+
+::::: column
+:::: card-equipo
+::: {style="display: flex; justify-content: left; align-items: left; padding-top: 10px;"}
+<img src="images/seo.png" style="width:auto; height:70px;"/>
+:::
+#### Equipo de trabajo en <a href="https://seo.org/" target="_blank">SEO/BirdLife</a>:
 
 -   Virginia Escandell ([vescandell\@seo.org](mailto:vescandell@seo.org) )
 
 -   Juan Carlos del Moral ([jcdelmoral\@seo.org](mailto:jcdelmoral@seo.org) )
 
 -   Emilio Escudero ([eescudero\@seo.org](mailto:eescudero@seo.org) )
-:::
 ::::
-:::::::
+:::::
+:::::::::
+<img src="images/teg.png" style="width:120px; height:auto; padding-right:10px; padding-bottom:20px;"/> <a href="https://www.teguam.es/" target="_blank"> Grupo de Investigación de Ecología y Conservación de Ecosistemas Terrestres de la UAM</a>
+<img src="images/cibc.png" style="width:120px; height:auto; padding-right:10px; margin-bottom:10px;"/> <a href="https://www.uam.es/uam/cibc" target="_blank"> Centro de Investigación en Biodiversidad y Cambio Global de la UAM</a>

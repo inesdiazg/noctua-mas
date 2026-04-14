@@ -182,10 +182,36 @@ leaflet() %>%
       bringToFront = TRUE),
     group = "Noctua+ 2024") %>%
   addLayersControl(
-    baseGroups = c("Noctua+ 2025", "Noctua+ 2024"),
-    options = layersControlOptions(collapsed = FALSE)) %>%
-  # Ocultar la capa 24 al inicio
-  hideGroup("Noctua+ 2024")
+    overlayGroups = c("Noctua+ 2025", "Noctua+ 2024"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  hideGroup("Noctua+ 2024") %>%
+  addControl(
+    html = "
+    <div style='background:white; padding:10px; border-radius:5px;'>
+      <b>Temporadas</b><br>
+      
+      <div style='display:flex;align-items:center;margin-top:5px;'>
+        <span style='background:rgba(0,0,255,0.2);
+                     border:2px solid blue;
+                     width:18px; height:18px;
+                     display:inline-block;
+                     margin-right:5px;'></span>
+        2025
+      </div>
+      
+      <div style='display:flex;align-items:center;margin-top:5px;'>
+        <span style='background:rgba(255,0,0,0.2);
+                     border:2px solid red;
+                     width:18px; height:18px;
+                     display:inline-block;
+                     margin-right:5px;'></span>
+        2024
+      </div>
+    </div>
+    ",
+    position = "topleft"
+  )
 ```
 
 ## Hábitats
