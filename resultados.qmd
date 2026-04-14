@@ -310,7 +310,7 @@ highchart() %>%
       )
     )%>%
   hc_add_series(
-    name = "Número de grabadoras (2025)",
+    name = "2025",
     data = habitats_conteo2$n,
     color = "skyblue") %>%
   hc_plotOptions(
@@ -320,7 +320,8 @@ highchart() %>%
   hc_tooltip(
     useHTML = TRUE,
     formatter = JS("function() {return '<b>' + this.y + '</b>';}")) %>%
-  hc_yAxis(min=0, max=70)
+  hc_yAxis(min=0, max=70,
+    title = list(text = "Número de grabadoras"))
 ```
 
 ## Comunidades autónomas
