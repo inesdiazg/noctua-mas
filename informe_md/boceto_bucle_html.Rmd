@@ -435,9 +435,9 @@ Para más información sobre el **programa NOCTUA,** visita la <a href="https://
 
 Este informe ha sido elaborado por el equipo del programa **NOCTUA+**:
 
-::::::::: columns
-::::: column
-:::: card-equipo
+:::::::::: columns
+:::::: column
+::::: card-equipo
 ### Equipo de trabajo en la UAM:
 
 -   Javier Seoane
@@ -448,13 +448,17 @@ Este informe ha sido elaborado por el equipo del programa **NOCTUA+**:
 
 -   Inés Díaz
 
-Más información sobre en la <a href="https://teguam.es/" target="_blank">web del TEG-UAM</a>.
+Más información en las webs de la <a href="https://uam.es/" target="_blank">UAM</a>, el grupo <a href="https://teguam.es/" target="_blank">TEG-UAM</a> y el <a href="https://uam.es/uam/cibc" target="_blank">CIBC-UAM</a>.
 
 ::: {style="display: flex; justify-content: left; align-items: left; padding-top: 10px;"}
-<img src="images/uam_solo.png" style="width:120px; height:auto; padding-right:10px;"/> <img src="images/teg.png" style="width:120px; height:auto;"/>
+<img src="images/uam_solo.png" style="width:120px; height:auto;"/>
 :::
-::::
+
+::: {style="display: flex; justify-content: left; align-items: left; padding-top: 10px;"}
+<img src="images/teg.png" style="width:120px; height:auto; padding-right:10px;"/> <img src="images/cibc.png" style="width:120px; height:auto; padding-right:10px;"/>
+:::
 :::::
+::::::
 
 ::::: column
 :::: card-equipo
@@ -473,7 +477,7 @@ Más información en la <a href="https://seo.org/" target="_blank">web de SEO/Bi
 :::
 ::::
 :::::
-:::::::::
+::::::::::
 
 ::: agradecimientos
 **¡Muchas gracias por tu participación en el programa NOCTUA+!**
