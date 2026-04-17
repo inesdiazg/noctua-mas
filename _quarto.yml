@@ -6,7 +6,9 @@ lang: es
 
 website:
   title: "NOCTUA+ <img src='images/seo.png' height='50' style='padding-left:30px'><img src='images/uam.png' height='50' style='padding-left:20px'>"
+  favicon: "images/favicon.png"
   navbar:
+    logo: images/favicon.png
     right:
       - href: index.qmd
         text: Inicio
