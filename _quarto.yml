@@ -5,7 +5,7 @@ project:
 lang: es
 
 website:
-  title: "NOCTUA+ <img src='images/seo.png' height='50' style='padding-left:30px'><img src='images/noctua2.png' height='50' style='padding-left:20px'><img src='images/uam.png' height='50' style='padding-left:20px'>"
+  title: "NOCTUA+ <img src='images/seo.png' height='50' style='padding-left:30px'><img src='images/uam.png' height='50' style='padding-left:20px'>"
   navbar:
     right:
       - href: index.qmd

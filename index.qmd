@@ -5,46 +5,60 @@ lang: es
 
 Ampliación del programa de seguimiento de aves nocturnas NOCTUA de SEO/BirdLife usando **monitoreo acústico pasivo** (MAP).
 
-:::::: contenedor-botones-inicio
+::::::: contenedor-botones-inicio
 ::: {.card-inicio onclick="location.href='proyecto.html'"}
-¿En qué consiste el proyecto?\
-\
-¿Quién conforma el equipo?
+¿En qué consiste el proyecto?
+:::
+
+::: {.card-inicio onclick="location.href='equipo.html'"}
+¿Quiénes somos?
 :::
 
 ::: {.card-inicio onclick="location.href='resultados.html'"}
-¿Cuántos puntos de muestreo hay y dónde se ubican?\
-\
-¿Cuántas personas participan?
+¿Cuántos puntos de muestreo hay y dónde se ubican? ¿Cuántas personas participan?
 :::
 
 ::: {.card-inicio onclick="location.href='participar.html'"}
-¿Cómo puedo participar?
+¿Cómo puedes participar?
 :::
-::::::
-
-```{r, echo=FALSE}
-library(glue)
-library(htmltools)
-
-imagenes <- glue(
-  "<div style='text-align:center; padding:10px; padding-bottom:50px;'>
-  <img src='images/noctua.jpg' height='120'>
-  <img src='images/noctua2.jpg' height='120'>
-  <img src='images/audiomoth.jpg' height='120'>
-</div>"
-)
-
-HTML(imagenes)
-```
+:::::::
 
 ## Más información sobre...
 
--   Programa NOCTUA: <https://seo.org/noctua-4/>
+:::::::::: contenedor-info-inicio
+:::: {.card-info-inicio onclick="window.open('https://seo.org/noctua-4/', '_blank')"}
+::: card-contenido-info-inicio
+<img src="images/noctua2.png" class="icono-info-inicio"/>
 
--   Programas de ciencia ciudadana de SEO: <https://seo.org/ciencia-ciudadana/>
+<p>Programa NOCTUA</p>
+:::
+::::
 
--   Resultados de los programas de seguimiento: <https://seo.org/seguimiento-de-avifauna-resultados/>
+:::: {.card-info-inicio onclick="window.open('https://seo.org/ciencia-ciudadana/', '_blank')"}
+::: card-contenido-info-inicio
+<img src="images/noctua.jpg" class="icono-info-inicio"/>
+
+<p>Programas de ciencia ciudadana de SEO</p>
+:::
+::::
+
+:::: {.card-info-inicio onclick="window.open('https://seo.org/seguimiento-de-avifauna-resultados/', '_href')"}
+::: card-contenido-info-inicio
+<img src="images/report.png" class="icono-info-inicio"/>
+
+<p>Resultados de los programas de seguimiento</p>
+:::
+::::
+::::::::::
+
+## ¿Qué es el monitoreo acústico pasivo?
+
+::: contenedor-map
+<img src="images/audiomoth.jpg"/>
+
+<p>Se trata de una **metodología de seguimiento** de vida silvestre **no invasiva**, que permite documentar la presencia y comportamiento de especies que emiten vocalizaciones de forma **automatizada**. Es **complementaria** a los métodos tradicionales de muestreo y consiste en el uso de las llamadas **unidades de grabación autónomas**. </p>
+:::
+En el caso del proyecto NOCTUA+, se utilizan grabadoras de la marca Audiomoth, que se programan para grabar en un determinado periodo y con una determinada frecuencia, se colocan en el campo y una vez finalizado el periodo de muestreo se recogen para el análisis de los audios.
 
 ## Contacto
 

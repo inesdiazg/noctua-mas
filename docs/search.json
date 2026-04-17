@@ -67,7 +67,7 @@
     "href": "especies.html",
     "title": "Especies de estudio",
     "section": "",
-    "text": "El programa NOCTUA se centra en el estudio de __ especies de aves y __ de ortópteros de la Península Ibérica. En esta infografía interactiva podrás conocer más sobre estas especies diana."
+    "text": "El proyecto NOCTUA+ se centra en el estudio de 10 especies de aves y 4 de ortópteros de la Península Ibérica. En esta infografía interactiva podrás conocer más sobre estas especies diana."
   },
   {
     "objectID": "equipo.html",
@@ -95,7 +95,14 @@
     "href": "index.html#más-información-sobre",
     "title": "NOCTUA+",
     "section": "Más información sobre…",
-    "text": "Más información sobre…\n\nPrograma NOCTUA: https://seo.org/noctua-4/\nProgramas de ciencia ciudadana de SEO: https://seo.org/ciencia-ciudadana/\nResultados de los programas de seguimiento: https://seo.org/seguimiento-de-avifauna-resultados/"
+    "text": "Más información sobre…\n\n\n\n\n\nPrograma NOCTUA\n\n\n\n\n\n\n\nProgramas de ciencia ciudadana de SEO\n\n\n\n\n\n\n\nResultados de los programas de seguimiento"
+  },
+  {
+    "objectID": "index.html#qué-es-el-monitoreo-acústico-pasivo",
+    "href": "index.html#qué-es-el-monitoreo-acústico-pasivo",
+    "title": "NOCTUA+",
+    "section": "¿Qué es el monitoreo acústico pasivo?",
+    "text": "¿Qué es el monitoreo acústico pasivo?\n\n\n\nSe trata de una metodología de seguimiento de vida silvestre no invasiva, que permite documentar la presencia y comportamiento de especies que emiten vocalizaciones de forma automatizada. Es complementaria a los métodos tradicionales de muestreo y consiste en el uso de las llamadas unidades de grabación autónomas.\n\n\nEn el caso del proyecto NOCTUA+, se utilizan grabadoras de la marca Audiomoth, que se programan para grabar en un determinado periodo y con una determinada frecuencia, se colocan en el campo y una vez finalizado el periodo de muestreo se recogen para el análisis de los audios."
   },
   {
     "objectID": "index.html#contacto",

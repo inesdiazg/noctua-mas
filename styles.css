@@ -1,3 +1,5 @@
+/* estilo títulos y texto----------------------*/
+
 h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -11,28 +13,39 @@ h4 {
   text-align: justify !important;
 }
 
-/* botones */
+
+/* Contenedor principal de Quarto---------------*/
+.page-columns {
+  position: relative;
+}
+
+
+/* botones preguntas inicio------------------------*/
+
 .contenedor-botones-inicio {
-  display: flex;
-  gap: 20px;              /* espacio entre tarjetas */
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  grid-gap: 20px;
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .card-inicio {
-  flex: 1;                /* todas ocupan el mismo ancho */
+  flex: 1;          /* todas ocupan el mismo ancho */
   display: flex;
+  flex-direction: column;
   align-items: center;    /* centra vertical */
   justify-content: center;/* centra horizontal */
   text-align: center;
-  padding: 12px;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   cursor: pointer;
 
   background-color: #3f98d3 !important;
   border-radius: 9px;
   box-sizing: border-box;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: bold;
   color: white;
   transition: box-shadow 0.3s;
@@ -42,10 +55,68 @@ h4 {
   box-shadow: 0 6px 16px rgba(0,0,0,0.4);
 }
 
+/* columnas más info---------------------------*/
+.contenedor-info-inicio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 2 columnas */
+  grid-gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.card-info-inicio {
+  flex: 1;          /* todas ocupan el mismo ancho */
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* centra vertical */
+  justify-content: center;/* centra horizontal */
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+
+  border-radius: 9px;
+  box-sizing: border-box;
+  font-size: 19px;
+  transition: box-shadow 0.3s;
+}
+
+.card-info-inicio:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.icono-info-inicio {
+  height: auto;       /* ajusta tamaño */
+  width: 150px;
+  object-fit: contain;
+}
+
+.contenido-info-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centra verticalmente */
+  justify-content: center; /* centra todo el bloque */
+  gap: 12px;             /* espacio entre imagen y texto */
+  text-align: center;
+}
+
+/* MAP-----------------------------------------*/
+.contenedor-map {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.contenedor-map img {
+  height: 200px;
+}
+
+/* columnas equipo-----------------------------*/
 .card-equipo {
   border:none;
 }
 
+
+/* objetivos-----------------------------------*/
 .contenedor-objetivos-proyecto {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columnas */
@@ -82,19 +153,13 @@ h4 {
   gap: 12px;             /* espacio entre imagen y texto */
 }
 
-/* una columna de objetivos en el movil */
-@media (max-width: 768px) {
+@media (max-width: 768px) {  /* una columna de objetivos en el movil */
   .contenedor-objetivos-proyecto {
     grid-template-columns: 1fr;
   }
 }
 
-/* Contenedor principal de Quarto */
-.page-columns {
-  position: relative;
-}
-
-/* Imagen fuera del cuerpo pero alineada al margen del contenido */
+/* Imagen búho fuera del cuerpo pero alineada al margen del contenido */
 .buho-contenedor {
   position: absolute;
   left: 100%;
@@ -113,8 +178,7 @@ h4 {
   margin-top: 5px;
 }
 
-/* Ocultar búho en pantallas pequeñas */
-@media (max-width: 700px) {
+@media (max-width: 700px) { /* Ocultar búho en pantallas pequeñas */
   .buho-contenedor {
     display: none;
   }
